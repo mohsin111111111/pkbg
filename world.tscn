@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://tco8eq576y5w"]
+
+[ext_resource type="Script" uid="uid://dvphdk3alnw0e" path="res://player.gd" id="1_f3sb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fj7yv"]
+
+[node name="World" type="Node3D" unique_id=386800679]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=139613945]
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1298992977]
+transform = Transform3D(1, 0, 0, 0, 0.060421377, 0.99817294, 0, -0.99817294, 0.060421377, 0, 5.9280605, 0)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1003812761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.164456, 0)
+script = ExtResource("1_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=91415920]
+shape = SubResource("CapsuleShape3D_fj7yv")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=649585981]
+transform = Transform3D(1, 0, 0, 0, 0.9690071, 0.24703285, 0, -0.24703285, 0.9690071, 0, 3.5256133, 0)
