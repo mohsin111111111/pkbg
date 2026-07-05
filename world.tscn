@@ -3,26 +3,49 @@
 [ext_resource type="Script" uid="uid://dvphdk3alnw0e" path="res://player.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://dvkban7aiq1h0" path="res://enemy.tscn" id="2_fj7yv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
-albedo_color = Color(0.6432653, 0.35803646, 0.14776722, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tlwt5"]
+sky_material = SubResource("ProceduralSkyMaterial_fj7yv")
+
+[sub_resource type="Environment" id="Environment_aqk2v"]
+background_mode = 2
+sky = SubResource("Sky_tlwt5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fj7yv"]
+radius = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fj7yv"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_fj7yv"]
+vertices = PackedVector3Array(-49.5, 1, -49.5, -49.5, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
+albedo_color = Color(0.6432653, 0.35803646, 0.14776722, 1)
+
 [node name="World" type="Node3D" unique_id=386800679]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=823052327]
+environment = SubResource("Environment_aqk2v")
 
 [node name="Enemy" parent="." unique_id=520630786 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.936141, 1.5, -4.105901)
+
+[node name="AttackZone" type="Area3D" parent="Enemy" unique_id=1900307759]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/AttackZone" unique_id=508945591]
+shape = SubResource("SphereShape3D_fj7yv")
 
 [node name="Enemy2" parent="." unique_id=1530459836 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 2)
 
 [node name="Enemy3" parent="." unique_id=1648178145 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=139613945]
-use_collision = true
-size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1298992977]
 transform = Transform3D(1, 0, 0, 0, 0.060421377, 0.99817294, 0, -0.99817294, 0.060421377, 0, 5.9280605, 0)
@@ -43,3 +66,47 @@ size = Vector3(0.2, 0.2, 1)
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D" unique_id=715387651]
 target_position = Vector3(0, 0, -50)
+
+[node name="HUD" type="CanvasLayer" parent="Player" unique_id=2053224005]
+
+[node name="HealthText" type="Label" parent="Player/HUD" unique_id=925519738]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Health: 100
+"
+
+[node name="CrossHair" type="ColorRect" parent="Player/HUD" unique_id=488114299]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7921569, 0.07450981, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreText" type="Label" parent="Player/HUD" unique_id=481321914]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Score:0"
+metadata/_edit_use_anchors_ = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=704408807]
+navigation_mesh = SubResource("NavigationMesh_fj7yv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=139613945]
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_fj7yv")
+
+[connection signal="body_entered" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_entered"]

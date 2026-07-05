@@ -1,14 +1,26 @@
 extends CharacterBody3D
-const SPEED = 5.0
+const WALK_SPEED = 5.0
+const SPRINT_SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 
+var current_speed=WALK_SPEED
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_sensitivity = 0.002
+var health=100
+var score = 0
+
+var jump_count=0
+var max_jumps=2
+
 @onready var camera = $Camera3D
 @onready var raycast = $Camera3D/RayCast3D
+@onready var health_text = $HUD/HealthText
+@onready var score_text = $HUD/ScoreText
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	health_text.text = "Health:" + str(health)
+	score_text.text = "Score:" + str(score) 
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
@@ -24,16 +36,34 @@ func _physics_process(delta):
 				hit_object.take_damage()
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	else:
+		jump_count=0
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_count+=1
+		
+	if Input.is_action_just_pressed("sprint"):
+		current_speed=SPRINT_SPEED
+	else:
+		current_speed=WALK_SPEED
 		
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x,0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
 	move_and_slide()  
 			
+
+func take_damage(amount):
+	health-=amount
+	health_text.text="Health"+str(health)
+	
+	if health<=0:
+		get_tree().call_deferred("reload_current_scene")
+func add_score(amount):
+	score += amount
+	score_text.text = "Score: " + str(score) 
