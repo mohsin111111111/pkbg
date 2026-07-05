@@ -29,6 +29,7 @@ func _ready():
 	health_text.text = "Health:" + str(health)
 	score_text.text= "Score:" + str(score)
 	update_ammo_text()
+	raycast.add_exception(self)
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
