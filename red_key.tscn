@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://1j3n8pqmwslw"]
+
+[ext_resource type="Script" uid="uid://pxg1crc6xy82" path="res://red_key.gd" id="1_h1rak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg3ii"]
+albedo_color = Color(0.81182367, 0, 0.19985673, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1rak"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="RedKey" type="Area3D" unique_id=1592518867]
+script = ExtResource("1_h1rak")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1111375354]
+size = Vector3(0.2, 0.2, 0.2)
+material = SubResource("StandardMaterial3D_rg3ii")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=611034988]
+shape = SubResource("BoxShape3D_h1rak")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

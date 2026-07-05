@@ -101,6 +101,17 @@ grow_horizontal = 0
 text = "Score:0"
 metadata/_edit_use_anchors_ = true
 
+[node name="AmmoText" type="Label" parent="Player/HUD" unique_id=237030719]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=704408807]
 navigation_mesh = SubResource("NavigationMesh_fj7yv")
 
