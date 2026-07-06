@@ -6,13 +6,13 @@
 albedo_color = Color(0.81182367, 0, 0.19985673, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1rak"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.8, 0.3, 0.2)
 
 [node name="RedKey" type="Area3D" unique_id=1592518867]
 script = ExtResource("1_h1rak")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1111375354]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.8, 0.3, 0.2)
 material = SubResource("StandardMaterial3D_rg3ii")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=611034988]

@@ -33,35 +33,37 @@ albedo_color = Color(0.6432653, 0.35803646, 0.14776722, 1)
 [node name="World" type="Node3D" unique_id=386800679]
 
 [node name="Wall" type="CSGBox3D" parent="." unique_id=1504372625]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.882172, 2.6414886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.709381, 2.1698432, 0)
 use_collision = true
-size = Vector3(40, 5.308, 1)
+size = Vector3(44.34558, 5.308, 1)
 
 [node name="Wall2" type="CSGBox3D" parent="." unique_id=1605407375]
-transform = Transform3D(0.008726561, 0, 0.9999619, 0, 1, 0, -0.9999619, 0, 0.008726561, 0.22097781, 1.2308655, -25.321474)
+transform = Transform3D(0.008726561, 0, 0.9999619, 0, 1, 0, -0.9999619, 0, 0.008726561, 0.22097781, 2.0475225, -25.321474)
 use_collision = true
-size = Vector3(49.307404, 3.461731, 1)
+size = Vector3(49.307, 5.3, 1)
 
 [node name="RedDoor" parent="." unique_id=1907407992 instance=ExtResource("1_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0585194, 3.394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.346687, 2.2695026, -35.71488)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=823052327]
 environment = SubResource("Environment_aqk2v")
 
 [node name="Enemy" parent="." unique_id=520630786 instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.936141, 1.5, -4.105901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8645117, 1.5, -5.3083224)
 
 [node name="Enemy2" parent="." unique_id=1530459836 instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.22572, 0.7687483, -32.870373)
+holds_key = true
+is_guard = true
 
 [node name="Enemy3" parent="." unique_id=1648178145 instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.51987, 0.851923, -41.061012)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1298992977]
 transform = Transform3D(1, 0, 0, 0, 0.060421377, 0.99817294, 0, -0.99817294, 0.060421377, 0, 5.9280605, 0)
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1003812761 groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.164456, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4266138, 42.851112)
 script = ExtResource("1_f3sb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=91415920]
@@ -143,7 +145,8 @@ material = SubResource("StandardMaterial3D_fj7yv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2036705, 0.7499995, 34.024326)
 
 [node name="RedKey" parent="." unique_id=1592518867 instance=ExtResource("5_036b0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5515552, 0.6, 4.6700974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.30422, 0.6, -42.87872)
+visible = false
 
 [node name="Barrrel" parent="." unique_id=705147351 instance=ExtResource("6_dwbse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273579, 1.6136703, 33.02619)

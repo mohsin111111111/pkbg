@@ -2,6 +2,9 @@ extends CharacterBody3D
 const SPEED = 3
 var health = 3
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export var holds_key= false
+@export var is_guard = false
+var key_blueprint = preload("res://red_key.tscn")
 #var speed = 2.0 
 @onready var player = get_tree().get_first_node_in_group("Player")
 #@onready var nav_agent = $'NavigationAgent3D'
@@ -9,18 +12,26 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if player !=null:
-		var direction = global_position.direction_to(player.global_position)
-		direction.y = 0
+		if is_guard == false:
+			var direction = global_position.direction_to(player.global_position)
+			direction.y = 0
 		#nav_agent.target_position = player.global_position
 		#var next_location = nav_agent.get_next_path_position()
 		#var direction = (next_location-global_position).normalized()
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+	elif is_guard == true:
+		velocity.x = 0
+		velocity.z = 0
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z),Vector3.UP)
-	move_and_slide()
+		move_and_slide()
 func take_damage():
 	health -= 1
 	if health <= 0:
+		if holds_key == true:
+			var dropped_key = key_blueprint.instantiate()
+			get_parent().add_child(dropped_key)
+			dropped_key.global_position = self.global_position +  Vector3(0,1,0)
 		player.add_score(1)
 		queue_free()
 
