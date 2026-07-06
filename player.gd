@@ -51,6 +51,8 @@ func _physics_process(delta):
 			var hit_object = raycast.get_collider()
 			if hit_object.has_method("take_damage"):
 				hit_object.take_damage()
+			elif hit_object.get_parent() !=null and hit_object.get_parent().has_method("take_damage"):
+				hit_object.get_parent().take_damage() 
 	if (Input.is_action_just_pressed("reload")or (Input.is_action_just_pressed("shoot")and current_ammo <=0)) and current_ammo< max_ammo and not is_reloading:
 		reload_weapon()
 	if not is_on_floor():

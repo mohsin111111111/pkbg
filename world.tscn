@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpyeuplq6c1dx" path="res://health_pack.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://1j3n8pqmwslw" path="res://red_key.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://c5ubjjcc8onhx" path="res://barrrel.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://vcoy74j3yaxb" path="res://spawner.tscn" id="7_pkg7o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,9 +20,6 @@ background_mode = 2
 sky = SubResource("Sky_tlwt5")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_fj7yv"]
-radius = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fj7yv"]
 
@@ -43,13 +41,8 @@ environment = SubResource("Environment_aqk2v")
 [node name="Enemy" parent="." unique_id=520630786 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.936141, 1.5, -4.105901)
 
-[node name="AttackZone" type="Area3D" parent="Enemy" unique_id=1900307759]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/AttackZone" unique_id=508945591]
-shape = SubResource("SphereShape3D_fj7yv")
-
 [node name="Enemy2" parent="." unique_id=1530459836 instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.970954, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 2)
 
 [node name="Enemy3" parent="." unique_id=1648178145 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
@@ -58,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
 transform = Transform3D(1, 0, 0, 0, 0.060421377, 0.99817294, 0, -0.99817294, 0.060421377, 0, 5.9280605, 0)
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1003812761 groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3810039, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.164456, 0)
 script = ExtResource("1_f3sb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=91415920]
@@ -73,6 +66,7 @@ size = Vector3(0.2, 0.2, 1)
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D" unique_id=715387651]
 target_position = Vector3(0, 0, -50)
+collide_with_areas = true
 
 [node name="HUD" type="CanvasLayer" parent="Player" unique_id=2053224005]
 
@@ -140,12 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2036705, 0.7499995, 34.0243
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5515552, 0.6, 4.6700974)
 
 [node name="Barrrel" parent="." unique_id=705147351 instance=ExtResource("6_dwbse")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273579, 1.5, 33.02619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273579, 1.6136703, 33.02619)
 
-[node name="Barrrel2" parent="." unique_id=1039863260 instance=ExtResource("6_dwbse")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.639261, 1.5, 32.080402)
-
-[node name="Barrrel3" parent="." unique_id=1665009270 instance=ExtResource("6_dwbse")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9277153, 1.5, 24.812092)
-
-[connection signal="body_entered" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_entered"]
+[node name="Spawner" parent="." unique_id=1778161684 instance=ExtResource("7_pkg7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, 26)
