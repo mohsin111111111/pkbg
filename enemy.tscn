@@ -16,6 +16,7 @@ radius = 0.7
 radius = 1.5
 
 [node name="Enemy" type="CharacterBody3D" unique_id=520630786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5018547, 0)
 script = ExtResource("1_7k104")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2076974408]
@@ -38,3 +39,5 @@ shape = SubResource("SphereShape3D_7k104")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackZone" unique_id=1166689608]
 shape = SubResource("SphereShape3D_4gyqm")
+
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
