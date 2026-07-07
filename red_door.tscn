@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b36h0ixk2w5mk" path="res://red_door.gd" id="1_egxfp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_egxfp"]
-size = Vector3(2, 3, 0.52978516)
+size = Vector3(4, 5, 0.53)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82bcw"]
 albedo_color = Color(0.85490197, 0.08627451, 0.1764706, 1)
@@ -20,7 +20,7 @@ shape = SubResource("BoxShape3D_egxfp")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1980241472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2030698, 0)
-size = Vector3(2, 5.3, 0.5)
+size = Vector3(3.5, 6, 0.5)
 material = SubResource("StandardMaterial3D_82bcw")
 
 [node name="UnblockZone" type="Area3D" parent="." unique_id=1034199926]
