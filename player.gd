@@ -49,6 +49,9 @@ func _physics_process(delta):
 		camera.rotation.x=clamp(camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
 		if raycast.is_colliding():
 			var hit_object = raycast.get_collider()
+			
+			print("---PULLED TRIGGER---")
+			print("My laser just hit :",hit_object.name)
 			if hit_object.has_method("take_damage"):
 				hit_object.take_damage()
 			elif hit_object.get_parent() !=null and hit_object.get_parent().has_method("take_damage"):
