@@ -8,7 +8,7 @@ height = 2.416504
 [sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
 size = Vector3(0.3, 0.6, 0.3)
 
-[node name="Player" type="CharacterBody3D" unique_id=2113813744]
+[node name="Player" type="CharacterBody3D" unique_id=2113813744 groups=["Player"]]
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=214602291]

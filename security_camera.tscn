@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://buvvhfs4mlucc"]
+
+[ext_resource type="Script" uid="uid://dvf4pt8vwlll5" path="res://security_camera.gd" id="1_ic0dy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snius"]
+albedo_color = Color(0.75686276, 0.84313726, 0.87058824, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ic0dy"]
+size = Vector3(0.64733887, 0.10443115, 0.19859314)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snius"]
+size = Vector3(6.0092545, 1.6276855, 2.2159424)
+
+[node name="SecurityCamera" type="StaticBody3D" unique_id=151747043]
+script = ExtResource("1_ic0dy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1619171725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16040039, 0.26883698, 0.22184587)
+size = Vector3(0.6791992, 0.11213684, 0.20321798)
+material = SubResource("StandardMaterial3D_snius")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1277872530]
+transform = Transform3D(1, 0, 0, 0, 0.68384993, 0, 0, 0, 1, 0.15704346, 0.25132477, 0.22312164)
+shape = SubResource("BoxShape3D_ic0dy")
+
+[node name="VisionZone" type="Area3D" parent="." unique_id=1935625197]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionZone" unique_id=1253385490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9322243, -0.31384277, 0.27452755)
+shape = SubResource("BoxShape3D_snius")
+
+[connection signal="body_entered" from="VisionZone" to="." method="_on_vision_zone_body_entered"]

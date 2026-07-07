@@ -9,6 +9,7 @@ var player = null
 @onready var gun_ray = $GunRay
 var can_shoot = true 
 var gun_damage = 10 
+var tracer_scene = preload("res://tracer.tscn")
 func _ready():
 	print("A zombie just spawnned! Is it a guard?" , is_guard)
 	if gun_ray != null:
@@ -33,6 +34,9 @@ func _physics_process(delta):
 	move_and_slide()
 func fire_at_player():
 	if can_shoot and gun_ray.is_colliding():
+		var tracer = tracer_scene.instantiate()
+		get_tree().root.add_child(tracer)
+		tracer.global_transform = gun_ray.global_transform
 		var hit_object = gun_ray.get_collider()
 		if hit_object.is_in_group("Player") and hit_object.has_method("take_damage"):
 			hit_object.take_damage(gun_damage)

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ubjjcc8onhx" path="res://barrrel.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://546vxj5unv6e" path="res://player.tscn" id="7_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://vcoy74j3yaxb" path="res://spawner.tscn" id="7_pkg7o"]
+[ext_resource type="Script" uid="uid://dpfw3du8a46vq" path="res://level_exit.gd" id="8_gbfbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,6 +36,9 @@ metallic = 0.7
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkg7o"]
 albedo_color = Color(0.3137255, 0.49019608, 0.15686275, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioo17"]
+size = Vector3(3.161602, 6.2734375, 0.34936523)
+
 [node name="World" type="Node3D" unique_id=386800679]
 
 [node name="Wall" type="CSGBox3D" parent="." unique_id=1504372625]
@@ -43,14 +47,14 @@ use_collision = true
 size = Vector3(44.34558, 5.308, 1)
 
 [node name="Wall5" type="CSGBox3D" parent="." unique_id=1501717133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.162022, 1.8302479, 46.24106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.826559, 1.8302479, 46.24106)
 use_collision = true
-size = Vector3(31.952202, 5.308, 1)
+size = Vector3(31.281277, 5.308, 1)
 
 [node name="Wall6" type="CSGBox3D" parent="." unique_id=1052578245]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.361263, 1.6229916, 46.24106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.71232, 1.6229916, 46.24106)
 use_collision = true
-size = Vector3(15.779892, 5.308, 1)
+size = Vector3(15.0777855, 5.308, 1)
 
 [node name="Wall2" type="CSGBox3D" parent="." unique_id=1605407375]
 transform = Transform3D(0.008726561, 0, 0.9999619, 0, 1, 0, -0.9999619, 0, 0.008726561, 0.16716093, 2.0475225, -19.154688)
@@ -152,5 +156,14 @@ use_collision = true
 size = Vector3(3.699646, 4.7602234, 2.9213867)
 material = SubResource("StandardMaterial3D_pkg7o")
 
-[node name="Player" parent="." unique_id=2113813744 groups=["Player"] instance=ExtResource("7_gbfbk")]
+[node name="Player" parent="." unique_id=2113813744 instance=ExtResource("7_gbfbk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.89431, 0, 24.759037)
+
+[node name="LevelExit" type="Area3D" parent="." unique_id=1912466878]
+script = ExtResource("8_gbfbk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelExit" unique_id=1225453129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.443794, 2.6367188, 46.057922)
+shape = SubResource("BoxShape3D_ioo17")
+
+[connection signal="body_entered" from="LevelExit" to="LevelExit" method="_on_body_entered"]
