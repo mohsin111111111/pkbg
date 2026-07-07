@@ -51,7 +51,7 @@ func _physics_process(delta):
 			var hit_object = raycast.get_collider()
 			
 			print("---PULLED TRIGGER---")
-			print("My laser just hit :",hit_object.name)
+			print("My laser just hit this exact thing :",hit_object.name)
 			if hit_object.has_method("take_damage"):
 				hit_object.take_damage()
 			elif hit_object.get_parent() !=null and hit_object.get_parent().has_method("take_damage"):
