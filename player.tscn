@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvphdk3alnw0e" path="res://player.gd" id="1_4flbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+height = 2.416504
 
 [sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
 size = Vector3(0.3, 0.6, 0.3)
@@ -11,15 +12,16 @@ size = Vector3(0.3, 0.6, 0.3)
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=214602291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20825195, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1222297623]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7497239, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0648696, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1775160092]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014034271, -0.07722318, -1.3876526)
 target_position = Vector3(0, 0, -50)
 collision_mask = 7
+collide_with_areas = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1481594176]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.4128424, -0.51691437, -0.6042544)

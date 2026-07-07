@@ -12,13 +12,14 @@ size = Vector3(1, 2.5, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_4gyqm"]
 radius = 1.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7k104"]
-radius = 0.7501762
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gyqm"]
 albedo_color = Color(0, 0.003921569, 0.003921569, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7k104"]
+radius = 0.7501762
+
 [node name="Enemy" type="CharacterBody3D" unique_id=520630786]
+collision_layer = 2
 script = ExtResource("1_7k104")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2076974408]
@@ -36,16 +37,21 @@ collision_layer = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackZone" unique_id=1166689608]
 shape = SubResource("SphereShape3D_4gyqm")
 
-[node name="Head" type="Area3D" parent="AttackZone" unique_id=1181387556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3960447, 0)
-script = ExtResource("2_4gyqm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackZone/Head" unique_id=42148296]
-shape = SubResource("SphereShape3D_7k104")
-
 [node name="Visor" type="CSGBox3D" parent="." unique_id=3874964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.5)
 size = Vector3(0.8, 0.2, 0.1)
 material = SubResource("StandardMaterial3D_4gyqm")
+
+[node name="Head" type="Area3D" parent="." unique_id=1181387556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2379675, 0)
+collision_layer = 4
+script = ExtResource("2_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head" unique_id=42148296]
+shape = SubResource("SphereShape3D_7k104")
+
+[node name="GunRay" type="RayCast3D" parent="." unique_id=470458395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, -40)
 
 [connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]

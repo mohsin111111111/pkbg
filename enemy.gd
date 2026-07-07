@@ -6,8 +6,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var is_guard = false
 var key_blueprint = preload("res://red_key.tscn")
 var player = null
+@onready var gun_ray = $GunRay
+var can_shoot = true 
+var gun_damage = 10 
 func _ready():
 	print("A zombie just spawnned! Is it a guard?" , is_guard)
+	if gun_ray != null:
+		gun_ray.add_exception(self)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -23,8 +28,18 @@ func _physics_process(delta):
 		elif is_guard == true:
 			velocity.x = 0
 			velocity.z = 0
+			fire_at_player()
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z),Vector3.UP)
 	move_and_slide()
+func fire_at_player():
+	if can_shoot and gun_ray.is_colliding():
+		var hit_object = gun_ray.get_collider()
+		if hit_object.is_in_group("Player") and hit_object.has_method("take_damage"):
+			hit_object.take_damage(gun_damage)
+			print("Guard shot the player for ", gun_damage, "damage!")
+			can_shoot = false
+			await get_tree().create_timer(1.5).timeout
+			can_shoot = true
 func take_damage():
 	health -= 1
 	print("Body took damage! Health is now: ", health)
