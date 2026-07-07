@@ -18,7 +18,7 @@ albedo_color = Color(0, 0.003921569, 0.003921569, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_7k104"]
 radius = 0.7501762
 
-[node name="Enemy" type="CharacterBody3D" unique_id=520630786]
+[node name="Enemy" type="CharacterBody3D" unique_id=520630786 groups=["Enemy", "Player"]]
 collision_layer = 2
 script = ExtResource("1_7k104")
 

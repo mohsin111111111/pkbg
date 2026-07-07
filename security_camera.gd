@@ -1,15 +1,8 @@
-extends StaticBody3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_vision_zone_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
+extends  StaticBody3D
+func take_damage():
+	print("Camera destroyed! The area is secure.")
+	queue_free()
+func _on_vision_zone_body_entered(body):
+	if body.is_in_group("Player"):
+		print(" ALARM TRIGGERED! PLAYER DETECTED!")
+		get_tree().call_group("Enemy", "sound_alarm")

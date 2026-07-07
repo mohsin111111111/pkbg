@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://y1w5xo2exacw"]
 
 [ext_resource type="PackedScene" uid="uid://546vxj5unv6e" path="res://player.tscn" id="1_q7uhe"]
+[ext_resource type="PackedScene" uid="uid://buvvhfs4mlucc" path="res://security_camera.tscn" id="2_7xloa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7uhe"]
+albedo_color = Color(0.5550915, 0.99999994, 0.9227399, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xloa"]
+albedo_color = Color(0.21004245, 0.1953375, 0.239362, 1)
+metallic = 1.0
+roughness = 0.3
 
 [node name="BunkerLevel" type="Node3D" unique_id=2051595973]
 
@@ -9,4 +18,32 @@ use_collision = true
 size = Vector3(50, 1, 50)
 
 [node name="Player" parent="." unique_id=2113813744 instance=ExtResource("1_q7uhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.77939, 1.221098, 20.932425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.730543, 1.221098, 20.932425)
+
+[node name="PerimeterWall" type="CSGBox3D" parent="." unique_id=1970826306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.924826, 3.3612156, 16.292145)
+use_collision = true
+size = Vector3(22.150349, 6, 1)
+material = SubResource("StandardMaterial3D_q7uhe")
+
+[node name="Wall" type="CSGBox3D" parent="." unique_id=439836630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051778793, 3.3612156, 24.555553)
+use_collision = true
+size = Vector3(49.896442, 6, 1)
+material = SubResource("StandardMaterial3D_q7uhe")
+
+[node name="PerimeterWall2" type="CSGBox3D" parent="." unique_id=146170182]
+transform = Transform3D(-0.0013613999, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -0.0013613999, 6.17955, 3.3612156, 0.8321247)
+use_collision = true
+size = Vector3(46.47359, 6, 1)
+material = SubResource("StandardMaterial3D_q7uhe")
+
+[node name="CameraPole" type="CSGCylinder3D" parent="." unique_id=1868211772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.961136, 3.5853643, 0)
+use_collision = true
+radius = 0.13476563
+height = 8.2751465
+material = SubResource("StandardMaterial3D_7xloa")
+
+[node name="SecurityCamera" parent="." unique_id=151747043 instance=ExtResource("2_7xloa")]
+transform = Transform3D(-0.7931638, -0.31594145, -0.52064604, -0.37460092, 0.92715126, 0.0080560455, 0.4801724, 0.20142423, -0.8537348, 24.090593, 6.834651, 0.15923631)

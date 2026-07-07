@@ -10,6 +10,7 @@ var player = null
 var can_shoot = true 
 var gun_damage = 10 
 var tracer_scene = preload("res://tracer.tscn")
+var alarm_sounded = false
 func _ready():
 	print("A zombie just spawnned! Is it a guard?" , is_guard)
 	if gun_ray != null:
@@ -26,7 +27,13 @@ func _physics_process(delta):
 			direction.y = 0
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
-		elif is_guard == true:
+	elif is_guard == true:
+		if alarm_sounded == true:
+			var direction = global_position.direction_to(player.global_position)
+			direction.y = 0
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
 			velocity.x = 0
 			velocity.z = 0
 			fire_at_player()
@@ -71,3 +78,7 @@ func _on_attack_zone_body_entered(body):
 		if body.has_method("take_damage"):
 			body.take_damage(20)#: Node3D) -> void:
 	#pass # Replace with function body.
+func sound_alarm():
+	if is_guard == true:
+			print("Guard heard the alarm! Engaging target!")
+			alarm_sounded = true 

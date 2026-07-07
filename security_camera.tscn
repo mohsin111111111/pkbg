@@ -9,7 +9,7 @@ albedo_color = Color(0.75686276, 0.84313726, 0.87058824, 1)
 size = Vector3(0.64733887, 0.10443115, 0.19859314)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_snius"]
-size = Vector3(6.0092545, 1.6276855, 2.2159424)
+size = Vector3(15, 4.017, 6.24)
 
 [node name="SecurityCamera" type="StaticBody3D" unique_id=151747043]
 script = ExtResource("1_ic0dy")
@@ -26,7 +26,7 @@ shape = SubResource("BoxShape3D_ic0dy")
 [node name="VisionZone" type="Area3D" parent="." unique_id=1935625197]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VisionZone" unique_id=1253385490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9322243, -0.31384277, 0.27452755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3657637, -0.54074097, -1.0441952)
 shape = SubResource("BoxShape3D_snius")
 
 [connection signal="body_entered" from="VisionZone" to="." method="_on_vision_zone_body_entered"]
