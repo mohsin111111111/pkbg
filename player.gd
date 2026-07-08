@@ -23,6 +23,7 @@ const AIM_FOV = 40.0
 @onready var health_text = $HUD/HealthText
 @onready var score_text = $HUD/ScoreText
 @onready var ammo_text = $HUD/AmmoText 
+@onready var damage_overlay = $CanvasLayer/DamageOverlay
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -85,9 +86,17 @@ func _physics_process(delta):
 func take_damage(amount):
 	health-=amount
 	health_text.text="Health:"+str(health)
-	
-	if health<=0:
+	print("Player took damage! Health is now:", health)
+	flash_damage_screen()
+	if health<= 0:
+		print("Player died! Game Over!")
 		get_tree().call_deferred("reload_current_scene")
+func flash_damage_screen():
+	var tween = get_tree().create_tween()
+	tween.tween_property(damage_overlay,"color:a",0.4,0.1)
+	tween.tween_property(damage_overlay,"color:a",0.0,0.5)
+	#if health<=0:
+	#get_tree().call_deferred("reload_current_scene")
 func add_score(amount):
 	score += amount
 	score_text.text= "Score: " + str(score)

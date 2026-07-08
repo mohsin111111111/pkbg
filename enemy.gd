@@ -28,30 +28,46 @@ func _physics_process(delta):
 			direction.y = 0
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
-	elif is_guard == true:
-		if alarm_sounded == true:
-			var direction = global_position.direction_to(player.global_position)
-			direction.y = 0
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = 0
-			velocity.z = 0
+		elif is_guard == true:
+			if alarm_sounded == true:
+				var direction = global_position.direction_to(player.global_position)
+				direction.y = 0
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = 0
+				velocity.z = 0
 			fire_at_player()
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z),Vector3.UP)
 	move_and_slide()
 func fire_at_player():
 	if can_shoot and gun_ray.is_colliding():
+		
+		var hit_object = gun_ray.get_collider()
+		print("Guard fired his laser, and it hit: ", hit_object.name) 
+		
 		var tracer = tracer_scene.instantiate()
 		get_tree().root.add_child(tracer)
 		tracer.global_transform = gun_ray.global_transform
-		var hit_object = gun_ray.get_collider()
+		
 		if hit_object.is_in_group("Player") and hit_object.has_method("take_damage"):
 			hit_object.take_damage(gun_damage)
 			print("Guard shot the player for ", gun_damage, "damage!")
-			can_shoot = false
-			await get_tree().create_timer(1.5).timeout
-			can_shoot = true
+		can_shoot = false
+		await get_tree().create_timer(1.5).timeout
+		can_shoot = true
+#func fire_at_player():
+	#if can_shoot and gun_ray.is_colliding():
+		#var tracer = tracer_scene.instantiate()
+		#get_tree().root.add_child(tracer)
+		#tracer.global_transform = gun_ray.global_transform
+		#var hit_object = gun_ray.get_collider()
+		#if hit_object.is_in_group("Player") and hit_object.has_method("take_damage"):
+			#hit_object.take_damage(gun_damage)
+			#print("Guard shot the player for ", gun_damage, "damage!")
+			#can_shoot = false
+			#await get_tree().create_timer(1.5).timeout
+			#can_shoot = true
 func take_damage():
 	health -= 1
 	print("Body took damage! Health is now: ", health)
@@ -83,4 +99,3 @@ func sound_alarm():
 	if is_guard == true:
 			print("Guard heard the alarm! Engaging target!")
 			alarm_sounded = true 
-	
