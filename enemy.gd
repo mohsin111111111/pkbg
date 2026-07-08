@@ -22,6 +22,7 @@ func _physics_process(delta):
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
 	if player != null:
+		look_at(Vector3(player.global_position.x,global_position.y,player.global_position.z),Vector3.UP)
 		if is_guard == false:
 			var direction = global_position.direction_to(player.global_position)
 			direction.y = 0
@@ -82,3 +83,4 @@ func sound_alarm():
 	if is_guard == true:
 			print("Guard heard the alarm! Engaging target!")
 			alarm_sounded = true 
+	
