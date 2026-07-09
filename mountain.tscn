@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b84jbg6vp75wa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioo17"]
+albedo_color = Color(0.4509804, 0.3019608, 0.15294118, 1)
+
+[node name="Mountain" type="CSGSphere3D" unique_id=1364574315]
+transform = Transform3D(3.642637, 0, 0, 0, 4.6393385, 0, 0, 0, 4.5810623, 0, 0, 0)
+use_collision = true
+radius = 2.7631643
+material = SubResource("StandardMaterial3D_ioo17")

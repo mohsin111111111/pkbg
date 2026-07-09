@@ -197,6 +197,6 @@ transform = Transform3D(3.5335476, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -54.927723, 3
 transform = Transform3D(3.5335476, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -33.790142, 3.5161638, 0.34752083)
 
 [node name="ChainLinkFence3" parent="OuterMountains" unique_id=1708617785 instance=ExtResource("9_ioo17")]
-transform = Transform3D(2.8733723, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -14.612534, 3.5161638, 0.34752083)
+transform = Transform3D(2.8733723, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -15.973906, 3.5161638, 0.34752083)
 
 [connection signal="body_entered" from="LevelExit" to="LevelExit" method="_on_body_entered"]

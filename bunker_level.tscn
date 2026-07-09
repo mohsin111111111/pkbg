@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://546vxj5unv6e" path="res://player.tscn" id="1_q7uhe"]
 [ext_resource type="PackedScene" uid="uid://buvvhfs4mlucc" path="res://security_camera.tscn" id="2_7xloa"]
+[ext_resource type="PackedScene" uid="uid://dvkban7aiq1h0" path="res://enemy.tscn" id="3_3yuak"]
+[ext_resource type="PackedScene" uid="uid://b84jbg6vp75wa" path="res://mountain.tscn" id="4_k7oxc"]
+[ext_resource type="PackedScene" uid="uid://cmkfm82vgdmdy" path="res://chain_link_fence.tscn" id="5_ql7me"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvrnf"]
+albedo_color = Color(0.4317874, 0.32170734, 0.069547795, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7uhe"]
 albedo_color = Color(0.5550915, 0.99999994, 0.9227399, 1)
@@ -15,7 +21,8 @@ roughness = 0.3
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=3923035]
 use_collision = true
-size = Vector3(50, 1, 50)
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_jvrnf")
 
 [node name="Player" parent="." unique_id=2113813744 instance=ExtResource("1_q7uhe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.730543, 1.221098, 20.932425)
@@ -33,17 +40,60 @@ size = Vector3(49.896442, 6, 1)
 material = SubResource("StandardMaterial3D_q7uhe")
 
 [node name="PerimeterWall2" type="CSGBox3D" parent="." unique_id=146170182]
-transform = Transform3D(-0.0013613999, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -0.0013613999, 6.17955, 3.3612156, 0.8321247)
+transform = Transform3D(-0.0013613999, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -0.0013613999, 9.862413, 3.3612156, 6.409259)
 use_collision = true
-size = Vector3(46.47359, 6, 1)
+size = Vector3(35.319313, 6, 1)
 material = SubResource("StandardMaterial3D_q7uhe")
 
 [node name="CameraPole" type="CSGCylinder3D" parent="." unique_id=1868211772]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.961136, 3.5853643, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.961136, 2.7502432, 0)
 use_collision = true
 radius = 0.13476563
-height = 8.2751465
+height = 6.604904
 material = SubResource("StandardMaterial3D_7xloa")
 
 [node name="SecurityCamera" parent="." unique_id=151747043 instance=ExtResource("2_7xloa")]
-transform = Transform3D(-0.7931638, -0.31594145, -0.52064604, -0.37460092, 0.92715126, 0.0080560455, 0.4801724, 0.20142423, -0.8537348, 24.090593, 6.834651, 0.15923631)
+transform = Transform3D(-0.7931638, -0.31594145, -0.52064604, -0.37460092, 0.92715126, 0.0080560455, 0.4801724, 0.20142423, -0.8537348, 24.090593, 5.4510145, 0.15923631)
+
+[node name="Enemy" parent="." unique_id=520630786 instance=ExtResource("3_3yuak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.198515, 1.495409, -13.035477)
+
+[node name="Enemy2" parent="." unique_id=1389393358 instance=ExtResource("3_3yuak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3981247, 1.7500038, -18.310448)
+
+[node name="Enemy3" parent="." unique_id=447133119 instance=ExtResource("3_3yuak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37694, 1.7499962, -18.210327)
+
+[node name="Mountain" parent="." unique_id=1364574315 instance=ExtResource("4_k7oxc")]
+transform = Transform3D(3.642637, 0, 0, 0, 4.6393385, 0, 0, 0, 4.5810623, 37.587433, -4.7231197, 19.322382)
+radius = 3.805726
+
+[node name="Mountain2" parent="." unique_id=1822077556 instance=ExtResource("4_k7oxc")]
+transform = Transform3D(3.642637, 0, 0, 0, 4.6393385, 0, 0, 0, 4.5810623, 40.5699, 0.6607084, -8.324017)
+
+[node name="ChainLinkFence" parent="." unique_id=1026508040 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.818207, 2.4166498, 0.4682734)
+
+[node name="ChainLinkFence7" parent="." unique_id=28568404 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.818207, 2.4166498, -18.18671)
+
+[node name="ChainLinkFence8" parent="." unique_id=1358462980 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.818207, 2.4166498, -24.645119)
+
+[node name="ChainLinkFence9" parent="." unique_id=1817464399 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.818207, 2.4166498, -31.30682)
+
+[node name="ChainLinkFence5" parent="." unique_id=971022491 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.818207, 2.4166498, -5.5801105)
+
+[node name="ChainLinkFence6" parent="." unique_id=1183630951 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.818207, 2.4166498, -11.163862)
+
+[node name="ChainLinkFence2" parent="." unique_id=1510982668 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 25.17314, 2.4070635, 6.4155226)
+
+[node name="ChainLinkFence3" parent="." unique_id=120992844 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1276532, 24.190666, 2.4911652, 12.393668)
+
+[node name="ChainLinkFence4" parent="." unique_id=1425731662 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.15461108, 0, -0.964861, 0, 1, 0, 1.2012718, 0, -0.12418355, 23.463964, 2.5369463, 18.977839)

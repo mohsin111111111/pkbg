@@ -15,8 +15,8 @@ size = Vector3(15, 4.017, 6.24)
 script = ExtResource("1_ic0dy")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1619171725]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16040039, 0.26883698, 0.22184587)
-size = Vector3(0.6791992, 0.11213684, 0.20321798)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23278809, 0.22777939, 0.18207419)
+size = Vector3(0.8239746, 0.19425201, 0.28276134)
 material = SubResource("StandardMaterial3D_snius")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1277872530]
@@ -29,4 +29,14 @@ shape = SubResource("BoxShape3D_ic0dy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3657637, -0.54074097, -1.0441952)
 shape = SubResource("BoxShape3D_snius")
 
+[node name="StatusLight" type="OmniLight3D" parent="." unique_id=1862730332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73899126, 0.22774684, 0.18309087)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 0.158
+
+[node name="BlinkTimer" type="Timer" parent="." unique_id=1989257803]
+autostart = true
+
 [connection signal="body_entered" from="VisionZone" to="." method="_on_vision_zone_body_entered"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
