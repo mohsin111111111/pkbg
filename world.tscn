@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://546vxj5unv6e" path="res://player.tscn" id="7_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://vcoy74j3yaxb" path="res://spawner.tscn" id="7_pkg7o"]
 [ext_resource type="Script" uid="uid://dpfw3du8a46vq" path="res://level_exit.gd" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://cmkfm82vgdmdy" path="res://chain_link_fence.tscn" id="9_ioo17"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,11 +24,11 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fj7yv"]
-vertices = PackedVector3Array(-50.118896, -5.9604645e-08, -49.5, -50.118896, -5.9604645e-08, 49.5, 48.881104, -5.9604645e-08, 49.5, 48.881104, -5.9604645e-08, -49.5)
+vertices = PackedVector3Array(-61.23584, -5.9604645e-08, -49.5, -61.23584, -5.9604645e-08, 46.75, 48.76416, -5.9604645e-08, 46.75, 48.76416, -5.9604645e-08, -49.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
-albedo_color = Color(0.6432653, 0.35803646, 0.14776722, 1)
+albedo_color = Color(0.4466474, 0.32425502, 0.22182152, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbfbk"]
 albedo_color = Color(0.33120587, 0.3549559, 0.2971592, 1)
@@ -39,12 +40,15 @@ albedo_color = Color(0.3137255, 0.49019608, 0.15686275, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioo17"]
 size = Vector3(3.161602, 6.2734375, 0.34936523)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioo17"]
+albedo_color = Color(0.4509804, 0.3019608, 0.15294118, 1)
+
 [node name="World" type="Node3D" unique_id=386800679]
 
 [node name="Wall" type="CSGBox3D" parent="." unique_id=1504372625]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.709381, 2.1698432, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8550677, 3.8535242, 0)
 use_collision = true
-size = Vector3(44.34558, 5.308, 1)
+size = Vector3(0.6369543, 8.675363, 1)
 
 [node name="Wall5" type="CSGBox3D" parent="." unique_id=1501717133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.826559, 1.8302479, 46.24106)
@@ -96,9 +100,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06995201, 0)
 navigation_mesh = SubResource("NavigationMesh_fj7yv")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=139613945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6188965, -0.4995, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.177368, -0.49950004, -1.3949585)
 use_collision = true
-size = Vector3(100, 0.001, 100)
+size = Vector3(111.11694, 0.001, 97.21008)
 material = SubResource("StandardMaterial3D_fj7yv")
 
 [node name="HealthPack" parent="." unique_id=816590165 instance=ExtResource("3_tlwt5")]
@@ -165,5 +169,34 @@ script = ExtResource("8_gbfbk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelExit" unique_id=1225453129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.443794, 2.6367188, 46.057922)
 shape = SubResource("BoxShape3D_ioo17")
+
+[node name="OuterMountains" type="Node3D" parent="." unique_id=549823587]
+
+[node name="Mountain" type="CSGSphere3D" parent="OuterMountains" unique_id=386096160]
+transform = Transform3D(3.642637, 0, 0, 0, 4.6393385, 0, 0, 0, 4.5810623, -56.134716, 0, 35.430256)
+use_collision = true
+radius = 2.7631643
+material = SubResource("StandardMaterial3D_ioo17")
+
+[node name="Mountain2" type="CSGSphere3D" parent="OuterMountains" unique_id=716849200]
+transform = Transform3D(6.685272, 0, 0, 0, 7.226103, 0, 0, 0, 5.5845866, -59.01791, 0, 20.935555)
+use_collision = true
+radius = 2.7631643
+material = SubResource("StandardMaterial3D_ioo17")
+
+[node name="Mountain3" type="CSGSphere3D" parent="OuterMountains" unique_id=1244701094]
+transform = Transform3D(6.685272, 0, 0, 0, 6.3595066, 0, 0, 0, 3.3423107, -64.54673, -2.9300842, 9.866457)
+use_collision = true
+radius = 2.9976342
+material = SubResource("StandardMaterial3D_ioo17")
+
+[node name="ChainLinkFence" parent="OuterMountains" unique_id=1026508040 instance=ExtResource("9_ioo17")]
+transform = Transform3D(3.5335476, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -54.927723, 3.5161638, 0.34752083)
+
+[node name="ChainLinkFence2" parent="OuterMountains" unique_id=1983541190 instance=ExtResource("9_ioo17")]
+transform = Transform3D(3.5335476, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -33.790142, 3.5161638, 0.34752083)
+
+[node name="ChainLinkFence3" parent="OuterMountains" unique_id=1708617785 instance=ExtResource("9_ioo17")]
+transform = Transform3D(2.8733723, 0, 0, 0, 2.2738376, 0, 0, 0, 1, -14.612534, 3.5161638, 0.34752083)
 
 [connection signal="body_entered" from="LevelExit" to="LevelExit" method="_on_body_entered"]
