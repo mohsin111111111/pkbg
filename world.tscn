@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vcoy74j3yaxb" path="res://spawner.tscn" id="7_pkg7o"]
 [ext_resource type="Script" uid="uid://dpfw3du8a46vq" path="res://level_exit.gd" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://cmkfm82vgdmdy" path="res://chain_link_fence.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://b84jbg6vp75wa" path="res://mountain.tscn" id="9_wse8f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -172,11 +173,8 @@ shape = SubResource("BoxShape3D_ioo17")
 
 [node name="OuterMountains" type="Node3D" parent="." unique_id=549823587]
 
-[node name="Mountain" type="CSGSphere3D" parent="OuterMountains" unique_id=386096160]
+[node name="Mountain" parent="OuterMountains" unique_id=1364574315 instance=ExtResource("9_wse8f")]
 transform = Transform3D(3.642637, 0, 0, 0, 4.6393385, 0, 0, 0, 4.5810623, -56.134716, 0, 35.430256)
-use_collision = true
-radius = 2.7631643
-material = SubResource("StandardMaterial3D_ioo17")
 
 [node name="Mountain2" type="CSGSphere3D" parent="OuterMountains" unique_id=716849200]
 transform = Transform3D(6.685272, 0, 0, 0, 7.226103, 0, 0, 0, 5.5845866, -59.01791, 0, 20.935555)
