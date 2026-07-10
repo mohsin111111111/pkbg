@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://biyhgulmruk6t"]
 
+[ext_resource type="Script" uid="uid://b0mqxgwii7sk8" path="res://pc_terminal.gd" id="1_88lji"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ob6rb"]
 albedo_color = Color(0.065144256, 0.056159586, 0.08309037, 1)
 
@@ -9,7 +11,14 @@ albedo_color = Color(0.08497956, 0.09208583, 0.08971778, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju431"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ju431"]
+size = Vector3(2.4278564, 1, 1.4169922)
+
 [node name="PCTerminal" type="Area3D" unique_id=1146881351]
+script = ExtResource("1_88lji")
+
+[node name="DownloadTimer" type="Timer" parent="." unique_id=69489955]
+wait_time = 0.1
 
 [node name="DeskMesh" type="CSGBox3D" parent="." unique_id=196048313]
 transform = Transform3D(0.6215706, 0, 0, 0, 0.7693672, 0, 0, 0, 0.63017297, 0, 0, 0)
@@ -30,3 +39,75 @@ material = SubResource("StandardMaterial3D_88lji")
 transform = Transform3D(1, 0, 0, 0, 0.9756839, 0.21918213, 0, -0.21918213, 0.9756839, 0, 0.4967693, 0)
 size = Vector3(1.2, 0.7, 0.1)
 material = SubResource("StandardMaterial3D_ju431")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=190786283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054260254, 0, 0.2084961)
+shape = SubResource("BoxShape3D_ju431")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1754572027]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1552084589]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1.2032688e-05, 0.57916987, 0.0501014, 1)
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/ColorRect" unique_id=374278189]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 182.0
+offset_right = 960.0
+offset_bottom = 311.0
+theme_override_font_sizes/font_size = 45
+text = "FIREWALL ACTIVE:Enter Sequence
+"
+
+[node name="Btn1" type="Button" parent="CanvasLayer/ColorRect" unique_id=1493808075]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 354.0
+offset_right = 658.0
+offset_bottom = 447.0
+theme_override_font_sizes/font_size = 35
+text = "1
+"
+
+[node name="Btn2" type="Button" parent="CanvasLayer/ColorRect" unique_id=1024136846]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 356.0
+offset_right = 423.0
+offset_bottom = 449.0
+theme_override_font_sizes/font_size = 35
+text = "2
+"
+
+[node name="Btn3" type="Button" parent="CanvasLayer/ColorRect" unique_id=271308410]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 352.0
+offset_right = 908.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 35
+text = "3
+"
+
+[node name="DownloadBar" type="ProgressBar" parent="CanvasLayer/ColorRect" unique_id=246174526]
+visible = false
+layout_mode = 0
+offset_left = 555.0
+offset_top = 553.0
+offset_right = 659.0
+offset_bottom = 642.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="DownloadTimer" to="." method="_on_download_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Btn1" to="." method="_on_btn_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Btn2" to="." method="_on_btn_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Btn3" to="." method="_on_btn_3_pressed"]
