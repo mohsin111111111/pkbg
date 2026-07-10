@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://biyhgulmruk6t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ob6rb"]
+albedo_color = Color(0.065144256, 0.056159586, 0.08309037, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88lji"]
+albedo_color = Color(0.08497956, 0.09208583, 0.08971778, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju431"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="PCTerminal" type="Area3D" unique_id=1146881351]
+
+[node name="DeskMesh" type="CSGBox3D" parent="." unique_id=196048313]
+transform = Transform3D(0.6215706, 0, 0, 0, 0.7693672, 0, 0, 0, 0.63017297, 0, 0, 0)
+size = Vector3(3, 1, 1)
+
+[node name="MonitorBase" type="CSGBox3D" parent="." unique_id=554006356]
+transform = Transform3D(1.3101791, 0, 0, 0, 1, 0, 0, 0, 0.13137902, 0, 0.41183597, -0.0142633915)
+size = Vector3(0.5, 0.05, 0.5)
+material = SubResource("StandardMaterial3D_ob6rb")
+
+[node name="MonitorStand" type="CSGCylinder3D" parent="." unique_id=1935734117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47997618, 0)
+radius = 0.04
+height = 0.4
+material = SubResource("StandardMaterial3D_88lji")
+
+[node name="MonitorScreen" type="CSGBox3D" parent="MonitorStand" unique_id=1603690544]
+transform = Transform3D(1, 0, 0, 0, 0.9756839, 0.21918213, 0, -0.21918213, 0.9756839, 0, 0.4967693, 0)
+size = Vector3(1.2, 0.7, 0.1)
+material = SubResource("StandardMaterial3D_ju431")
