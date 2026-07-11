@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var health = 3
-var gun_damage = 10 
+var gun_damage = 5
 var tracer_scene = preload("res://tracer.tscn")
 var player = null 
 var is_hiding = false 
@@ -17,7 +17,7 @@ func _ready():
 		
 	add_child(cover_timer)
 	cover_timer.timeout.connect(_on_cover_timer_timeout)
-	cover_timer.start(2.0)
+	cover_timer.start(2.5)
 	
 func _physics_process(_delta):
 	if player == null:

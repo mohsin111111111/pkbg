@@ -1,4 +1,5 @@
 extends CharacterBody3D
+
 enum WeaponType {LASER, SHOTGUN, SNIPER}
 var current_weapon = WeaponType.LASER
 var weapon_db = {
@@ -13,7 +14,7 @@ const JUMP_VELOCITY = 4.5
 
 var current_speed = WALK_SPEED
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var mouse_sensitivity = 0.002
+var mouse_sensitivity = 0.002 
 var health = 100
 var score = 0
 var has_red_key = false
@@ -27,6 +28,7 @@ var can_shoot = true
 
 const BASE_FOV = 75.0
 const AIM_FOV = 40.0
+const SNIPER_FOV = 15.0 
 
 @onready var camera = $Camera3D
 @onready var raycast = $Camera3D/RayCast3D
@@ -34,6 +36,7 @@ const AIM_FOV = 40.0
 @onready var score_text = $HUD/ScoreText
 @onready var ammo_text = $HUD/AmmoText 
 @onready var damage_overlay = $CanvasLayer/DamageOverlay
+@onready var sniper_scope = $HUD/SniperScope 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -56,12 +59,22 @@ func _input(event):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
 	if Input.is_action_pressed("aim"):
-		camera.fov = lerp(camera.fov, AIM_FOV, 10 * delta)
+		if current_weapon == WeaponType.SNIPER:
+			camera.fov = lerp(camera.fov, SNIPER_FOV, 12 * delta)
+			mouse_sensitivity = 0.0005 
+			if sniper_scope:
+				sniper_scope.visible = true
+		else:
+			camera.fov = lerp(camera.fov, AIM_FOV, 10 * delta)
+			mouse_sensitivity = 0.002 
+			if sniper_scope:
+				sniper_scope.visible = false
 	else:
 		camera.fov = lerp(camera.fov, BASE_FOV, 10 * delta)
-		
+		mouse_sensitivity = 0.002 
+		if sniper_scope:
+			sniper_scope.visible = false
 	if Input.is_action_pressed("shoot") and current_ammo > 0 and not is_reloading and can_shoot:
 		fire_weapon()
 	if (Input.is_action_just_pressed("reload") or (Input.is_action_just_pressed("shoot") and current_ammo <= 0)) and current_ammo < max_ammo and not is_reloading:
@@ -86,6 +99,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 	move_and_slide()
+
 func fire_weapon():
 	can_shoot = false
 	current_ammo -= 1
