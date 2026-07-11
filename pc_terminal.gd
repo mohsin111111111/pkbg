@@ -78,3 +78,4 @@ func _on_download_timer_timeout():
 	if download_bar.value >= 100:
 		download_timer.stop()
 		status_label.text = "DATA SECURED. GET TO THE CHOPPER!"
+		get_tree().call_group("LockedDoors","open_door")
