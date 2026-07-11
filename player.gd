@@ -1,20 +1,30 @@
 extends CharacterBody3D
+enum WeaponType {LASER, SHOTGUN, SNIPER}
+var current_weapon = WeaponType.LASER
+var weapon_db = {
+	WeaponType.LASER: {"damage": 10, "rate": 0.2, "rays": 1, "spread": 0.0},
+	WeaponType.SHOTGUN: {"damage": 12, "rate": 0.8, "rays": 6, "spread": 0.15},
+	WeaponType.SNIPER: {"damage": 50, "rate": 1.5, "rays": 1, "spread": 0.0}
+}
+
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 4.5
 
-var current_speed=WALK_SPEED
+var current_speed = WALK_SPEED
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_sensitivity = 0.002
-var health=100
+var health = 100
 var score = 0
-var has_red_key=false
-var jump_count=0
-var max_jumps=2
-var max_ammo=10
-var current_ammo= max_ammo
+var has_red_key = false
+var jump_count = 0
+var max_jumps = 2
+var max_ammo = 10
+var current_ammo = max_ammo
 var is_reloading = false
 var recoil_amount = 0.05
+var can_shoot = true 
+
 const BASE_FOV = 75.0
 const AIM_FOV = 40.0
 
@@ -31,49 +41,44 @@ func _ready():
 	score_text.text= "Score:" + str(score)
 	update_ammo_text()
 	raycast.add_exception(self)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("weapon_1"): current_weapon = WeaponType.LASER
+	if event.is_action_pressed("weapon_2"): current_weapon = WeaponType.SHOTGUN
+	if event.is_action_pressed("weapon_3"): current_weapon = WeaponType.SNIPER
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90),deg_to_rad(90))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 	if Input.is_action_pressed("aim"):
 		camera.fov = lerp(camera.fov, AIM_FOV, 10 * delta)
 	else:
-		camera.fov = lerp(camera.fov,BASE_FOV,10 * delta)
-	if Input.is_action_just_pressed("shoot") and current_ammo>0 and not is_reloading:
-		current_ammo -= 1
-		update_ammo_text()
-		camera.rotation.x -= recoil_amount
-		camera.rotation.x=clamp(camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
-		if raycast.is_colliding():
-			var hit_object = raycast.get_collider()
-			
-			print("---PULLED TRIGGER---")
-			print("My laser just hit this exact thing :",hit_object.name)
-			if hit_object.has_method("take_damage"):
-				hit_object.take_damage()
-			elif hit_object.get_parent() !=null and hit_object.get_parent().has_method("take_damage"):
-				hit_object.get_parent().take_damage() 
-	if (Input.is_action_just_pressed("reload")or (Input.is_action_just_pressed("shoot")and current_ammo <=0)) and current_ammo< max_ammo and not is_reloading:
+		camera.fov = lerp(camera.fov, BASE_FOV, 10 * delta)
+		
+	if Input.is_action_pressed("shoot") and current_ammo > 0 and not is_reloading and can_shoot:
+		fire_weapon()
+	if (Input.is_action_just_pressed("reload") or (Input.is_action_just_pressed("shoot") and current_ammo <= 0)) and current_ammo < max_ammo and not is_reloading:
 		reload_weapon()
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
-		jump_count=0
-	if Input.is_action_just_pressed("ui_accept") and jump_count<max_jumps:
+		jump_count = 0
+	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
-		jump_count+=1
-		
+		jump_count += 1
 	if Input.is_action_pressed("sprint"):
-		current_speed=SPRINT_SPEED
+		current_speed = SPRINT_SPEED
 	else:
-		current_speed=WALK_SPEED
-		
+		current_speed = WALK_SPEED
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x,0, input_dir.y)).normalized()
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
@@ -81,39 +86,57 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 	move_and_slide()
-			
-
+func fire_weapon():
+	can_shoot = false
+	current_ammo -= 1
+	update_ammo_text()
+	camera.rotation.x -= recoil_amount
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	var stats = weapon_db[current_weapon]
+	var original_target = raycast.target_position
+	for i in range(stats.rays):
+		var offset = Vector3.ZERO
+		if stats.spread > 0:
+			offset = Vector3(randf_range(-stats.spread, stats.spread), randf_range(-stats.spread, stats.spread), 0)
+		raycast.target_position = original_target + (offset * original_target.length())
+		raycast.force_raycast_update()
+		if raycast.is_colliding():
+			var hit_object = raycast.get_collider()
+			print("---PULLED TRIGGER---")
+			print("Hit: ", hit_object.name, " with ", stats.damage, " damage!")
+			if hit_object.has_method("take_damage"):
+				hit_object.take_damage(stats.damage) 
+			elif hit_object.get_parent() != null and hit_object.get_parent().has_method("take_damage"):
+				hit_object.get_parent().take_damage(stats.damage)
+	raycast.target_position = original_target
+	await get_tree().create_timer(stats.rate).timeout
+	can_shoot = true
 func take_damage(amount):
-	health-=amount
-	health_text.text="Health:"+str(health)
+	health -= amount
+	health_text.text = "Health:" + str(health)
 	print("Player took damage! Health is now:", health)
 	flash_damage_screen()
-	if health<= 0:
+	if health <= 0:
 		print("Player died! Game Over!")
 		get_tree().call_deferred("reload_current_scene")
 func flash_damage_screen():
 	var tween = get_tree().create_tween()
-	tween.tween_property(damage_overlay,"color:a",0.4,0.1)
-	tween.tween_property(damage_overlay,"color:a",0.0,0.5)
-	#if health<=0:
-	#get_tree().call_deferred("reload_current_scene")
+	tween.tween_property(damage_overlay, "color:a", 0.4, 0.1)
+	tween.tween_property(damage_overlay, "color:a", 0.0, 0.5)
 func add_score(amount):
 	score += amount
-	score_text.text= "Score: " + str(score)
+	score_text.text = "Score: " + str(score)
 func update_ammo_text():
-		ammo_text.text = "Ammo:" + str(current_ammo) + "/" + str(max_ammo)
+	ammo_text.text = "Ammo:" + str(current_ammo) + "/" + str(max_ammo)
 func reload_weapon():
 	is_reloading = true
 	ammo_text.text = "Reloading..."
-	
 	await get_tree().create_timer(1.5).timeout
-	
 	current_ammo = max_ammo
-	is_reloading=false
+	is_reloading = false
 	update_ammo_text() 
 func heal(amount):
 	health += amount
 	if health > 100:
 		health = 100
 	health_text.text = "Health: " + str(health)
-	

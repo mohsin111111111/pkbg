@@ -1,6 +1,6 @@
 extends StaticBody3D
 @onready var explosion_zone = $ExplosionZone
-func take_damage():
+func take_damage(_amount):
 	var targets= explosion_zone.get_overlapping_bodies()
 	for target in targets:
 		if target.is_in_group("Player"):

@@ -3,7 +3,7 @@ extends  StaticBody3D
 @onready var blink_timer = $BlinkTimer
 func _ready():
 	status_light.light_color = Color.WHITE
-func take_damage():
+func take_damage(amount):
 	print("Camera destroyed! The area is secure.")
 	queue_free()
 func _on_vision_zone_body_entered(body):

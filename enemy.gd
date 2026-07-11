@@ -67,8 +67,8 @@ func fire_at_player():
 		can_shoot = false
 		await get_tree().create_timer(1.5).timeout
 		can_shoot = true
-func take_damage():
-	health -= 1
+func take_damage(amount):
+	health -= amount
 	print("Body took damage! Health is now: ", health)
 	if health <= 0:
 		print("Health hit 0. Zombie is dying!")
