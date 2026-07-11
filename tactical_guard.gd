@@ -52,7 +52,7 @@ func fire_at_player():
 			await get_tree().create_timer(1.0).timeout
 			gun_ray.enabled = true
 
-func take_damage():
-	health -= 1
+func take_damage(amount):
+	health -= amount
 	if health <= 0:
 		queue_free()
