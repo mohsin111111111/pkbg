@@ -98,6 +98,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
+	if velocity.y < -12.0:
+		camera.fov = lerp(camera.fov, 100.0, 5 * delta)
+		camera.rotation.z = lerp(camera.rotation.z, deg_to_rad(10), 3 * delta)
+	elif is_on_floor():
+		camera.rotation.z = lerp(camera.rotation.z, 0.0, 10 * delta)
 	move_and_slide()
 
 func fire_weapon():
