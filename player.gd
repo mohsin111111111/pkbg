@@ -20,6 +20,9 @@ var score = 0
 var has_red_key = false
 var jump_count = 0
 var max_jumps = 2
+var is_crouching = false
+var normal_speed = 5
+var crouch_speed = 2
 var max_ammo = 10
 var current_ammo = max_ammo
 var is_reloading = false
@@ -86,10 +89,18 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("crouch"):
+		is_crouching = true
+		current_speed = crouch_speed
+		camera.position.y = 0.5
+	elif Input.is_action_just_pressed("sprint"):
+		is_crouching = false
 		current_speed = SPRINT_SPEED
+		camera.position.y = 1.5
 	else:
+		is_crouching = false
 		current_speed = WALK_SPEED
+		camera.position.y = 1.5
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -121,12 +132,21 @@ func fire_weapon():
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			var hit_object = raycast.get_collider()
+			var distance = global_position.distance_to(hit_object.global_position)
 			print("---PULLED TRIGGER---")
-			print("Hit: ", hit_object.name, " with ", stats.damage, " damage!")
-			if hit_object.has_method("take_damage"):
-				hit_object.take_damage(stats.damage) 
-			elif hit_object.get_parent() != null and hit_object.get_parent().has_method("take_damage"):
-				hit_object.get_parent().take_damage(stats.damage)
+			if hit_object.name == "StealthGuard":
+				if distance < 2.0:
+					print("Silent Takedown! Guard eliminated")
+					hit_object.queue_free()
+				else:
+					print("Gunshot heard! Mission Failed.")
+					get_tree().change_scene_to_file("res://bunker_level.tscn")
+			else:
+				print("Hit: ", hit_object.name, " with ", stats.damage, " damage!")
+				if hit_object.has_method("take_damage"):
+					hit_object.take_damage(stats.damage) 
+				elif hit_object.get_parent() != null and hit_object.get_parent().has_method("take_damage"):
+					hit_object.get_parent().take_damage(stats.damage)
 	raycast.target_position = original_target
 	await get_tree().create_timer(stats.rate).timeout
 	can_shoot = true
