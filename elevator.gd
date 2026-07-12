@@ -16,5 +16,6 @@ func start_elevator():
 	is_moving = true
 	print("Power restored! Elevator going up...")
 	var tween = get_tree().create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	var target_y = global_position.y + ride_height
 	tween.tween_property(self, "global_position:y", target_y, ride_time)
