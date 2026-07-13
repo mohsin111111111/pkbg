@@ -3,9 +3,9 @@ extends CharacterBody3D
 enum WeaponType {LASER, SHOTGUN, SNIPER}
 var current_weapon = WeaponType.LASER
 var weapon_db = {
-	WeaponType.LASER: {"damage": 10, "rate": 0.2, "rays": 1, "spread": 0.0},
-	WeaponType.SHOTGUN: {"damage": 12, "rate": 0.8, "rays": 6, "spread": 0.15},
-	WeaponType.SNIPER: {"damage": 50, "rate": 1.5, "rays": 1, "spread": 0.0}
+	WeaponType.LASER: {"damage": 10, "rate": 0.2, "rays": 1, "spread": 0.0,"range": -50.0},
+	WeaponType.SHOTGUN: {"damage": 12, "rate": 0.8, "rays": 6, "spread": 0.15, "range": -15.0},
+	WeaponType.SNIPER: {"damage": 50, "rate": 1.5, "rays": 1, "spread": 0.0, "range": -2000.0}
 }
 
 const WALK_SPEED = 5.0
@@ -69,7 +69,6 @@ func _physics_process(delta):
 			if sniper_scope:
 				sniper_scope.visible = true
 		else:
-			camera.fov = lerp(camera.fov, AIM_FOV, 10 * delta)
 			mouse_sensitivity = 0.002 
 			if sniper_scope:
 				sniper_scope.visible = false
@@ -89,18 +88,23 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
+	var target_fov = BASE_FOV
 	if Input.is_action_pressed("crouch"):
 		is_crouching = true
 		current_speed = crouch_speed
 		camera.position.y = 0.5
-	elif Input.is_action_just_pressed("sprint"):
+	elif Input.is_action_pressed("sprint"):
 		is_crouching = false
 		current_speed = SPRINT_SPEED
+		#print("___ SIFT KEY DETECTED___")
 		camera.position.y = 1.5
+		target_fov = 95.0
 	else:
 		is_crouching = false
 		current_speed = WALK_SPEED
 		camera.position.y = 1.5
+	if not Input.is_action_pressed("aim"):
+		camera.fov = lerp(camera.fov, target_fov, 10 * delta)
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -115,14 +119,14 @@ func _physics_process(delta):
 	elif is_on_floor():
 		camera.rotation.z = lerp(camera.rotation.z, 0.0, 10 * delta)
 	move_and_slide()
-
 func fire_weapon():
 	can_shoot = false
 	current_ammo -= 1
 	update_ammo_text()
-	camera.rotation.x -= recoil_amount
+	camera.rotation.x += recoil_amount
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	var stats = weapon_db[current_weapon]
+	raycast.target_position = Vector3(0,0, stats.range)
 	var original_target = raycast.target_position
 	for i in range(stats.rays):
 		var offset = Vector3.ZERO
@@ -135,12 +139,16 @@ func fire_weapon():
 			var distance = global_position.distance_to(hit_object.global_position)
 			print("---PULLED TRIGGER---")
 			if hit_object.name == "StealthGuard":
-				if distance < 2.0:
+				if distance < 3.0:
 					print("Silent Takedown! Guard eliminated")
+					hit_object.queue_free()
+				elif current_weapon == WeaponType.SNIPER:
+					print("Sniper Assasination! Guard eliminated cleanly.")
 					hit_object.queue_free()
 				else:
 					print("Gunshot heard! Mission Failed.")
-					get_tree().change_scene_to_file("res://bunker_level.tscn")
+					get_tree().call_deferred("change_scene_to_file", "res://bunker_level.tscn")
+					return
 			else:
 				print("Hit: ", hit_object.name, " with ", stats.damage, " damage!")
 				if hit_object.has_method("take_damage"):
