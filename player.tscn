@@ -21,7 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0648696, 0)
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1775160092]
 target_position = Vector3(0, 0, -50)
 collision_mask = 7
-collide_with_areas = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1481594176]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.4128424, -0.51691437, -0.6042544)

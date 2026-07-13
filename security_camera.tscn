@@ -6,7 +6,7 @@
 albedo_color = Color(0.75686276, 0.84313726, 0.87058824, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ic0dy"]
-size = Vector3(0.64733887, 0.10443115, 0.19859314)
+size = Vector3(0.8, 0.104, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_snius"]
 size = Vector3(15, 4.017, 6.24)
@@ -16,6 +16,7 @@ script = ExtResource("1_ic0dy")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1619171725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23278809, 0.22777939, 0.18207419)
+use_collision = true
 size = Vector3(0.8239746, 0.19425201, 0.28276134)
 material = SubResource("StandardMaterial3D_snius")
 

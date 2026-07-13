@@ -81,6 +81,10 @@ func _physics_process(delta):
 		fire_weapon()
 	if (Input.is_action_just_pressed("reload") or (Input.is_action_just_pressed("shoot") and current_ammo <= 0)) and current_ammo < max_ammo and not is_reloading:
 		reload_weapon()
+	if Input.is_action_just_pressed("melee") and can_shoot:
+		melee_attack()
+	if Input.is_action_just_pressed("interact"):
+		try_interact()
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
@@ -123,8 +127,6 @@ func fire_weapon():
 	can_shoot = false
 	current_ammo -= 1
 	update_ammo_text()
-	camera.rotation.x += recoil_amount
-	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	var stats = weapon_db[current_weapon]
 	raycast.target_position = Vector3(0,0, stats.range)
 	var original_target = raycast.target_position
@@ -132,17 +134,19 @@ func fire_weapon():
 		var offset = Vector3.ZERO
 		if stats.spread > 0:
 			offset = Vector3(randf_range(-stats.spread, stats.spread), randf_range(-stats.spread, stats.spread), 0)
+			camera.rotation.x += recoil_amount
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		raycast.target_position = original_target + (offset * original_target.length())
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			var hit_object = raycast.get_collider()
-			var distance = global_position.distance_to(hit_object.global_position)
+			#var distance = global_position.distance_to(hit_object.global_position)
 			print("---PULLED TRIGGER---")
 			if hit_object.name == "StealthGuard":
-				if distance < 3.0:
-					print("Silent Takedown! Guard eliminated")
-					hit_object.queue_free()
-				elif current_weapon == WeaponType.SNIPER:
+				#if distance < 3.0:
+					#print("Silent Takedown! Guard eliminated")
+					#hit_object.queue_free()
+				if current_weapon == WeaponType.SNIPER:
 					print("Sniper Assasination! Guard eliminated cleanly.")
 					hit_object.queue_free()
 				else:
@@ -187,3 +191,33 @@ func heal(amount):
 	if health > 100:
 		health = 100
 	health_text.text = "Health: " + str(health)
+	
+func try_interact():
+	var original_target = raycast.target_position
+	raycast.target_position = Vector3(0, 0, -3.0) 
+	raycast.force_raycast_update()
+	if raycast.is_colliding():
+		var target = raycast.get_collider()
+		if target.has_method("rescue"):
+			target.rescue()
+			add_score(100) 
+			print("Interaction Success!")
+	raycast.target_position = original_target
+	
+func melee_attack():
+	can_shoot = false 
+	print("Swung Knife!")
+	var original_target = raycast.target_position
+	raycast.target_position = Vector3(0, 0, -2.5) 
+	raycast.force_raycast_update()
+	if raycast.is_colliding():
+		var target = raycast.get_collider()
+		if target.name == "StealthGuard":
+			print("Knife Execution! Guard eliminated silently.")
+			target.queue_free()
+		elif target.has_method("take_damage"):
+			print("Stabbed ", target.name, " for 50 damage!")
+			target.take_damage(50)
+	raycast.target_position = original_target
+	await get_tree().create_timer(0.5).timeout 
+	can_shoot = true

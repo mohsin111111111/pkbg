@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://txff4mnxvkge"]
+
+[ext_resource type="Script" uid="uid://p7svph3h77dx" path="res://hostage.gd" id="1_skgm8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dcq3"]
+albedo_color = Color(0, 0.9846758, 0.9900387, 1)
+
+[node name="Hostage" type="Node3D" unique_id=1242521326]
+script = ExtResource("1_skgm8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=421470410]
+use_collision = true
+size = Vector3(1.5, 3, 1)
+material = SubResource("StandardMaterial3D_6dcq3")
