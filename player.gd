@@ -202,6 +202,10 @@ func try_interact():
 			target.rescue()
 			add_score(100) 
 			print("Interaction Success!")
+		elif target.get_parent() !=null and target.get_parent().has_method("rescue"):
+			target.get_parent().rescue()
+			add_score(100)
+			print("Interaction Successful: Hostage Parent Saved!")
 	raycast.target_position = original_target
 	
 func melee_attack():
