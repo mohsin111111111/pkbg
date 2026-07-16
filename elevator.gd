@@ -1,7 +1,7 @@
 extends AnimatableBody3D
 
 var is_moving = false
-var ride_height = 35.0 
+var ride_height = 33.0 
 var ride_time = 5.0 
 
 var fuses_remaining = 3 
