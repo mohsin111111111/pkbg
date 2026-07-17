@@ -604,7 +604,7 @@ curve = SubResource("Curve3D_84qmt")
 script = ExtResource("16_fcfgm")
 
 [node name="DronePatrol" type="PathFollow3D" parent="DronePath" unique_id=537534687]
-transform = Transform3D(0.14552371, 0.03148302, 0.9888508, -1.8626437e-09, 0.99949074, -0.03182177, -0.98935395, 0.0046308246, 0.1454497, -117.033585, 13.425682, -35.026894)
+transform = Transform3D(0.14552371, 0.031483017, 0.98885065, -1.8626437e-09, 0.9994906, -0.031821765, -0.98935395, 0.004630824, 0.14544968, -117.033585, 13.425682, -34.893913)
 
 [node name="SurveillanceDrone" type="Node3D" parent="DronePath/DronePatrol" unique_id=151251228]
 

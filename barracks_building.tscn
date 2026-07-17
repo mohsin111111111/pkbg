@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bvkdhuedis47o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiva7"]
+albedo_color = Color(0.58641446, 0.74280596, 0.3841289, 1)
+
+[node name="BarracksBuilding" type="Node3D" unique_id=1325279580]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1054796522]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D" unique_id=214953678]
+size = Vector3(4, 3, 12)
+material = SubResource("StandardMaterial3D_aiva7")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticBody3D" unique_id=841933774]
+transform = Transform3D(-5.593741, 0.05636014, 2.805908, -3.1077056, -0.014469839, -5.051078, -0.045083757, -5.995424, 0.038567737, -0.053558, 2.336989, 0.36634934)
+radius = 0.36914063
+height = 2.1028137
+sides = 3
