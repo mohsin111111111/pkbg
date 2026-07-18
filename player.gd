@@ -23,6 +23,8 @@ var max_jumps = 2
 var is_crouching = false
 var normal_speed = 5
 var crouch_speed = 2
+var was_in_air: bool = false
+var fall_speed: float = 0.0
 var max_ammo = 10
 var current_ammo = max_ammo
 var is_reloading = false
@@ -33,6 +35,7 @@ const BASE_FOV = 75.0
 const AIM_FOV = 40.0
 const SNIPER_FOV = 15.0 
 
+@export var fall_damage_threshold: float = -15.0
 @onready var camera = $Camera3D
 @onready var raycast = $Camera3D/RayCast3D
 @onready var health_text = $HUD/HealthText
@@ -87,8 +90,26 @@ func _physics_process(delta):
 		try_interact()
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		was_in_air = true
+		fall_speed = velocity.y
 	else:
 		jump_count = 0
+	if is_on_floor() and was_in_air:
+		was_in_air = false
+		if fall_speed <= fall_damage_threshold:
+			var survived_fall: bool = false
+			for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				var collider = collision.get_collider()
+				if collider != null and collider.is_in_group("SafeNet"):
+					survived_fall = true
+					break
+			if survived_fall:
+				print("BOING! The net broke your fall!")
+			else:
+				print("CRUNCH! You fell too hard")
+				set_physics_process(false)
+				get_tree().call_deferred("reload_current_scene")
 	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1

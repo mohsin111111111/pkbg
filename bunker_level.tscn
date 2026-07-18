@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://txff4mnxvkge" path="res://hostage.tscn" id="13_jh7cf"]
 [ext_resource type="PackedScene" uid="uid://c3srl11rvg5xl" path="res://low_poly_tree_concept.glb" id="15_fcfgm"]
 [ext_resource type="Script" uid="uid://cu76208wdo5bi" path="res://drone_path.gd" id="16_fcfgm"]
+[ext_resource type="PackedScene" uid="uid://bvkdhuedis47o" path="res://barracks_building.tscn" id="17_84qmt"]
+[ext_resource type="PackedScene" uid="uid://bjap6hu65u2uk" path="res://heavy_border_wall.tscn" id="18_urkvm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_84qmt"]
 size = Vector2(100, 100)
@@ -50,7 +52,7 @@ vertices = PackedVector3Array(-22.207916, 0.8708286, 23.494865, -22.207916, 0.87
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(2, 3, 7), PackedInt32Array(7, 3, 8), PackedInt32Array(8, 3, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 13), PackedInt32Array(13, 9, 14), PackedInt32Array(12, 10, 9), PackedInt32Array(9, 10, 14), PackedInt32Array(9, 3, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 6), PackedInt32Array(19, 18, 6), PackedInt32Array(6, 18, 21), PackedInt32Array(6, 21, 20), PackedInt32Array(6, 20, 5), PackedInt32Array(6, 15, 19), PackedInt32Array(24, 23, 22), PackedInt32Array(22, 25, 16), PackedInt32Array(16, 17, 22), PackedInt32Array(22, 17, 24), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(23, 24, 30), PackedInt32Array(23, 30, 26), PackedInt32Array(26, 30, 29), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 18), PackedInt32Array(18, 34, 21), PackedInt32Array(35, 33, 34), PackedInt32Array(36, 37, 35), PackedInt32Array(34, 38, 21), PackedInt32Array(31, 32, 39), PackedInt32Array(42, 41, 40), PackedInt32Array(31, 39, 40), PackedInt32Array(40, 39, 42), PackedInt32Array(42, 39, 43), PackedInt32Array(43, 39, 44), PackedInt32Array(43, 45, 42), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 48, 47), PackedInt32Array(47, 48, 49), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 36), PackedInt32Array(48, 37, 36), PackedInt32Array(44, 39, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(53, 51, 54), PackedInt32Array(54, 51, 28), PackedInt32Array(56, 55, 29), PackedInt32Array(29, 55, 28), PackedInt32Array(29, 58, 57), PackedInt32Array(29, 57, 56), PackedInt32Array(55, 54, 28), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 63), PackedInt32Array(61, 63, 62), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(64, 69, 68), PackedInt32Array(68, 71, 70), PackedInt32Array(72, 61, 70), PackedInt32Array(67, 64, 62), PackedInt32Array(62, 64, 68), PackedInt32Array(62, 68, 70), PackedInt32Array(62, 70, 61), PackedInt32Array(75, 74, 73), PackedInt32Array(78, 77, 76), PackedInt32Array(41, 79, 40), PackedInt32Array(40, 79, 80), PackedInt32Array(76, 81, 78), PackedInt32Array(78, 81, 82), PackedInt32Array(73, 20, 21), PackedInt32Array(80, 79, 82), PackedInt32Array(38, 80, 82), PackedInt32Array(84, 83, 82), PackedInt32Array(82, 83, 78), PackedInt32Array(73, 21, 75), PackedInt32Array(75, 21, 81), PackedInt32Array(81, 21, 82), PackedInt32Array(82, 21, 38), PackedInt32Array(86, 85, 87), PackedInt32Array(87, 85, 88), PackedInt32Array(89, 91, 90), PackedInt32Array(92, 91, 93), PackedInt32Array(93, 91, 94), PackedInt32Array(88, 96, 95), PackedInt32Array(95, 97, 94), PackedInt32Array(87, 99, 98), PackedInt32Array(98, 99, 89), PackedInt32Array(91, 103, 94), PackedInt32Array(94, 102, 95), PackedInt32Array(95, 101, 88), PackedInt32Array(88, 101, 87), PackedInt32Array(87, 101, 99), PackedInt32Array(99, 100, 89), PackedInt32Array(89, 104, 91), PackedInt32Array(103, 102, 94), PackedInt32Array(91, 104, 103), PackedInt32Array(102, 101, 95), PackedInt32Array(101, 100, 99), PackedInt32Array(100, 104, 89), PackedInt32Array(103, 100, 102), PackedInt32Array(104, 100, 103), PackedInt32Array(102, 100, 101), PackedInt32Array(51, 52, 105), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 109), PackedInt32Array(109, 106, 105), PackedInt32Array(105, 106, 51), PackedInt32Array(110, 45, 43), PackedInt32Array(110, 43, 84), PackedInt32Array(84, 43, 111), PackedInt32Array(84, 111, 83), PackedInt32Array(114, 113, 112), PackedInt32Array(114, 112, 115), PackedInt32Array(114, 115, 116), PackedInt32Array(118, 117, 119), PackedInt32Array(119, 117, 47), PackedInt32Array(121, 120, 47), PackedInt32Array(47, 120, 122), PackedInt32Array(47, 122, 46), PackedInt32Array(47, 117, 121), PackedInt32Array(74, 75, 8), PackedInt32Array(8, 75, 124), PackedInt32Array(8, 124, 123), PackedInt32Array(8, 123, 7), PackedInt32Array(125, 124, 81), PackedInt32Array(81, 124, 75), PackedInt32Array(127, 126, 125), PackedInt32Array(125, 126, 123), PackedInt32Array(125, 123, 124), PackedInt32Array(77, 128, 76), PackedInt32Array(76, 128, 129), PackedInt32Array(126, 130, 131), PackedInt32Array(131, 130, 129), PackedInt32Array(133, 132, 134), PackedInt32Array(134, 132, 135), PackedInt32Array(128, 136, 129), PackedInt32Array(129, 136, 131), PackedInt32Array(131, 136, 132), PackedInt32Array(132, 136, 135), PackedInt32Array(130, 126, 127), PackedInt32Array(139, 138, 137), PackedInt32Array(141, 140, 137), PackedInt32Array(137, 140, 139), PackedInt32Array(140, 141, 142), PackedInt32Array(142, 141, 107), PackedInt32Array(142, 107, 108), PackedInt32Array(108, 143, 142), PackedInt32Array(146, 145, 144), PackedInt32Array(144, 148, 146), PackedInt32Array(146, 148, 147), PackedInt32Array(148, 149, 147), PackedInt32Array(118, 119, 150), PackedInt32Array(150, 119, 151), PackedInt32Array(153, 152, 120), PackedInt32Array(120, 152, 155), PackedInt32Array(120, 155, 154), PackedInt32Array(120, 154, 122), PackedInt32Array(151, 152, 150), PackedInt32Array(150, 152, 153), PackedInt32Array(157, 156, 158), PackedInt32Array(158, 156, 159), PackedInt32Array(161, 160, 158), PackedInt32Array(164, 163, 162), PackedInt32Array(166, 165, 161), PackedInt32Array(164, 159, 167), PackedInt32Array(161, 158, 166), PackedInt32Array(166, 158, 159), PackedInt32Array(166, 159, 164), PackedInt32Array(166, 164, 162), PackedInt32Array(162, 168, 166), PackedInt32Array(170, 169, 171), PackedInt32Array(171, 169, 154), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 155), PackedInt32Array(155, 171, 154), PackedInt32Array(175, 174, 176), PackedInt32Array(176, 174, 177), PackedInt32Array(179, 178, 176), PackedInt32Array(183, 185, 180), PackedInt32Array(180, 185, 181), PackedInt32Array(181, 185, 184), PackedInt32Array(181, 184, 182), PackedInt32Array(182, 188, 186), PackedInt32Array(186, 187, 177), PackedInt32Array(177, 187, 176), PackedInt32Array(176, 187, 179), PackedInt32Array(179, 189, 183), PackedInt32Array(183, 189, 185), PackedInt32Array(185, 187, 184), PackedInt32Array(184, 188, 182), PackedInt32Array(188, 187, 186), PackedInt32Array(187, 189, 179), PackedInt32Array(189, 187, 185), PackedInt32Array(187, 188, 184), PackedInt32Array(186, 190, 182), PackedInt32Array(183, 191, 179), PackedInt32Array(1, 133, 0), PackedInt32Array(0, 133, 134), PackedInt32Array(192, 194, 193), PackedInt32Array(195, 169, 170), PackedInt32Array(195, 196, 169), PackedInt32Array(169, 196, 197), PackedInt32Array(194, 192, 197), PackedInt32Array(196, 198, 197), PackedInt32Array(197, 198, 199), PackedInt32Array(172, 173, 198), PackedInt32Array(198, 173, 199), PackedInt32Array(199, 194, 197), PackedInt32Array(201, 200, 202), PackedInt32Array(202, 200, 10), PackedInt32Array(204, 203, 205), PackedInt32Array(205, 203, 11), PackedInt32Array(11, 203, 10), PackedInt32Array(11, 206, 205), PackedInt32Array(203, 202, 10), PackedInt32Array(200, 201, 207), PackedInt32Array(210, 209, 208), PackedInt32Array(211, 210, 208), PackedInt32Array(211, 208, 207), PackedInt32Array(207, 208, 200)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvrnf"]
-albedo_color = Color(0.4317874, 0.32170734, 0.069547795, 1)
+albedo_color = Color(0.3381911, 0.47275937, 0.15523797, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7uhe"]
 albedo_color = Color(0.47076678, 0.45371604, 0.36232334, 1)
@@ -129,10 +131,13 @@ size = Vector3(2, 2, 2)
 height = 12.0
 radius = 5.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urkvm"]
+albedo_color = Color(0.6754256, 0.42697972, 0.25030956, 1)
+
 [node name="BunkerLevel" type="Node3D" unique_id=2051595973]
 
 [node name="TreeSpawners" type="MeshInstance3D" parent="." unique_id=853388046]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.6544, 0.31622887, -97.53412)
+transform = Transform3D(-0.9932478, 0, 0.11601198, 0, 1, 0, -0.11601198, 0, -0.9932478, -1.134613, 0.31622887, -98.58554)
 mesh = SubResource("PlaneMesh_84qmt")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawners" unique_id=1761515768]
@@ -554,7 +559,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.756897, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.328232, -7.5505915, 0)
 shape = SubResource("SphereShape3D_urkvm")
 
-[node name="MilitaryNet" type="Area3D" parent="." unique_id=1503808000]
+[node name="MilitaryNet" type="StaticBody3D" parent="." unique_id=1396284006 groups=["SafeNet"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.63231, 5.1609726, 12.242399)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MilitaryNet" unique_id=420933402]
@@ -596,6 +601,7 @@ material = SubResource("StandardMaterial3D_fcfgm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.7145, 0.5000019, -50.465717)
 
 [node name="Object_2" parent="Sketchfab_Scene/Sketchfab_model/tree_2_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(898791360, 1415234059) index="0" unique_id=926333722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.86772, -56.430588, 0)
 mesh = ExtResource("1_0bt4d")
 
 [node name="DronePath" type="Path3D" parent="." unique_id=1174129390]
@@ -604,7 +610,8 @@ curve = SubResource("Curve3D_84qmt")
 script = ExtResource("16_fcfgm")
 
 [node name="DronePatrol" type="PathFollow3D" parent="DronePath" unique_id=537534687]
-transform = Transform3D(0.14552371, 0.031483017, 0.98885065, -1.8626437e-09, 0.9994906, -0.031821765, -0.98935395, 0.004630824, 0.14544968, -117.033585, 13.425682, -34.893913)
+transform = Transform3D(0.14552371, 0.031483036, 0.98885113, 0, 0.9994913, -0.03182178, -0.989354, 0.0046308283, 0.14544976, -117.033585, 13.425682, -34.893913)
+rotation_mode = 4
 
 [node name="SurveillanceDrone" type="Node3D" parent="DronePath/DronePatrol" unique_id=151251228]
 
@@ -622,6 +629,101 @@ shape = SubResource("CylinderShape3D_urkvm")
 [node name="SpotLight3D" type="SpotLight3D" parent="DronePath/DronePatrol/SurveillanceDrone" unique_id=1686944348]
 transform = Transform3D(0.97782564, -0.1500861, -0.14605744, 0.14049152, -0.047101576, 0.9889637, -0.15530917, -0.9875533, -0.024971288, 0, 0, 0)
 light_color = Color(1, 1, 0.36078432, 1)
+
+[node name="WalkingPath" type="CSGBox3D" parent="." unique_id=528973926]
+transform = Transform3D(0.0276251, 0, -0.99961835, 0, 1, 0, 0.99961835, 0, 0.0276251, -55.355446, 0.4333725, -21.091879)
+size = Vector3(40, 0.1, 4)
+material = SubResource("StandardMaterial3D_urkvm")
+
+[node name="WalkingPath2" type="CSGBox3D" parent="." unique_id=352347552]
+transform = Transform3D(0.0276251, 0, -0.99961835, 0, 1, 0, 0.99961835, 0, 0.0276251, -68.68212, 0.4333725, -21.091879)
+size = Vector3(40, 0.1, 4)
+material = SubResource("StandardMaterial3D_urkvm")
+
+[node name="WalkingPath3" type="CSGBox3D" parent="." unique_id=1216292945]
+transform = Transform3D(0.99944514, 0, -0.033312123, 0, 1, 0, 0.033312123, 0, 0.99944514, -71.66944, 0.4333725, -2.9910793)
+size = Vector3(40, 0.1, 4)
+material = SubResource("StandardMaterial3D_urkvm")
+
+[node name="Barracks_Sector" type="Node3D" parent="." unique_id=453796095]
+
+[node name="BarracksBuilding" parent="." unique_id=1325279580 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.16277, 1.9751186, -12.252285)
+
+[node name="BarracksBuilding2" parent="." unique_id=1021767943 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.33193, 2.2542305, -12.536573)
+
+[node name="BarracksBuilding3" parent="." unique_id=293751502 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.459286, 2, -12.807938)
+
+[node name="BarracksBuilding4" parent="." unique_id=668296103 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.16265, 1.9751186, -33.361523)
+
+[node name="BarracksBuilding5" parent="." unique_id=253240220 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.33181, 2.2542305, -33.645813)
+
+[node name="BarracksBuilding6" parent="." unique_id=751707555 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.459167, 2, -33.917175)
+
+[node name="BarracksBuilding7" parent="." unique_id=584552025 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.96767, 1.9751186, -12.252285)
+
+[node name="BarracksBuilding8" parent="." unique_id=1006816382 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.136826, 2.2542305, -12.536573)
+
+[node name="BarracksBuilding9" parent="." unique_id=1123220639 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.26418, 2, -12.807938)
+
+[node name="BarracksBuilding10" parent="." unique_id=1332982023 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.967545, 1.9751186, -33.361523)
+
+[node name="BarracksBuilding11" parent="." unique_id=925728006 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.1367, 2.2542305, -33.645813)
+
+[node name="BarracksBuilding12" parent="." unique_id=1043011094 instance=ExtResource("17_84qmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.26407, 2, -33.917175)
+
+[node name="HeavyBorderWall" parent="." unique_id=2124020834 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.021326356, 0, 0.9997725, 0, 1, 0, -0.9997725, 0, 0.021326356, -93.875, 0.75, -0.49376822)
+
+[node name="HeavyBorderWall2" parent="." unique_id=284606363 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.021326356, 0, 0.9997725, 0, 1, 0, -0.9997725, 0, 0.021326356, -93.64535, 0.75, -10.54744)
+
+[node name="HeavyBorderWall3" parent="." unique_id=1084472587 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.021326356, 0, 0.9997725, 0, 1, 0, -0.9997725, 0, 0.021326356, -93.44294, 0.75, -20.696178)
+
+[node name="HeavyBorderWall4" parent="." unique_id=1520666278 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.021326356, 0, 0.9997725, 0, 1, 0, -0.9997725, 0, 0.021326356, -93.234116, 0.75, -30.694635)
+
+[node name="HeavyBorderWall5" parent="." unique_id=1653790741 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.021326356, 0, 0.9997725, 0, 1, 0, -0.9997725, 0, 0.021326356, -93.03524, 0.75, -40.79915)
+
+[node name="HeavyBorderWall6" parent="." unique_id=680661505 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.021326356, 0, 0.9997725, 0, 1, 0, -0.9997725, 0, 0.021326356, -92.949814, 0.75, -47.64994)
+
+[node name="HeavyBorderWall7" parent="." unique_id=1604735313 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.679714, 0.75, 25.283844)
+
+[node name="HeavyBorderWall8" parent="." unique_id=1431736777 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.321682, 0.75, 25.283844)
+
+[node name="HeavyBorderWall9" parent="." unique_id=810903335 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.58009, 0.75, 25.283844)
+
+[node name="HeavyBorderWall10" parent="." unique_id=1102321037 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.780148, 0.75, 25.283844)
+
+[node name="HeavyBorderWall11" parent="." unique_id=630616617 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.27574, 0.75, 25.283844)
+
+[node name="HeavyBorderWall12" parent="." unique_id=1716570482 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.02536, 0.75, 25.283844)
+
+[node name="HeavyBorderWall13" parent="." unique_id=192598866 instance=ExtResource("18_urkvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.98413, 0.75, 25.283844)
+
+[node name="HeavyBorderWall14" parent="." unique_id=474237438 instance=ExtResource("18_urkvm")]
+transform = Transform3D(0.0106391935, 0, -0.9925727, 0, 1, 0, 0.5940684, 0, 0.017776022, -92.687195, 0.75, 22.76273)
 
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/VisionZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_vision_zone_body_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/HearingZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_hearing_zone_body_entered"]
