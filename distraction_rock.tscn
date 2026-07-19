@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b7toaruohn3wv"]
+
+[ext_resource type="Script" uid="uid://dywtaca5474ai" path="res://distraction_rock.gd" id="1_mlbbh"]
+
+[node name="DistractionRock" type="RigidBody3D" unique_id=1565750403]
+script = ExtResource("1_mlbbh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=543285620]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1316395682]
+radius = 0.2

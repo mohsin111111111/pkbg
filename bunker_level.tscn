@@ -134,6 +134,13 @@ radius = 5.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urkvm"]
 albedo_color = Color(0.6754256, 0.42697972, 0.25030956, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk5rt"]
+albedo_color = Color(0.2382622, 0.2382622, 0.23826218, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7k36"]
+albedo_color = Color(0.7741646, 0.2507726, 0.19036326, 1)
+metallic = 0.8
+
 [node name="BunkerLevel" type="Node3D" unique_id=2051595973]
 
 [node name="TreeSpawners" type="MeshInstance3D" parent="." unique_id=853388046]
@@ -610,7 +617,7 @@ curve = SubResource("Curve3D_84qmt")
 script = ExtResource("16_fcfgm")
 
 [node name="DronePatrol" type="PathFollow3D" parent="DronePath" unique_id=537534687]
-transform = Transform3D(0.14552371, 0.031483036, 0.98885113, 0, 0.9994913, -0.03182178, -0.989354, 0.0046308283, 0.14544976, -117.033585, 13.425682, -34.893913)
+transform = Transform3D(0.14552371, 0.031483043, 0.98885113, 0, 0.9994916, -0.03182178, -0.989354, 0.0046308297, 0.14544976, -117.033585, 13.425682, -34.893913)
 rotation_mode = 4
 
 [node name="SurveillanceDrone" type="Node3D" parent="DronePath/DronePatrol" unique_id=151251228]
@@ -724,6 +731,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.98413, 0.75, 25.283844)
 
 [node name="HeavyBorderWall14" parent="." unique_id=474237438 instance=ExtResource("18_urkvm")]
 transform = Transform3D(0.0106391935, 0, -0.9925727, 0, 1, 0, 0.5940684, 0, 0.017776022, -92.687195, 0.75, 22.76273)
+
+[node name="BunkerEnterance" type="Node3D" parent="." unique_id=822039870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.1218, 0, 0)
+
+[node name="EnteranceWall_Left" type="CSGBox3D" parent="BunkerEnterance" unique_id=339569559]
+transform = Transform3D(0.011588719, 0, 0.9999329, 0, 1, 0, -0.9999329, 0, 0.011588719, -47.839027, 2.1577396, 2.9350595)
+size = Vector3(1, 4, 6)
+material = SubResource("StandardMaterial3D_uk5rt")
+
+[node name="EnteranceWall_Right" type="CSGBox3D" parent="BunkerEnterance" unique_id=2033215803]
+transform = Transform3D(0.03299813, 0, 0.9994554, 0, 1, 0, -0.9994554, 0, 0.03299813, -47.73403, 1.55583, 7.480362)
+size = Vector3(1, 4, 6)
+material = SubResource("StandardMaterial3D_uk5rt")
+
+[node name="SlantedRoof" type="CSGBox3D" parent="BunkerEnterance" unique_id=1203983169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.779045, 3.6545162, 5.2283955)
+size = Vector3(6, 1, 5.5859375)
+
+[node name="BlastDoor" type="CSGBox3D" parent="BunkerEnterance" unique_id=2095159672]
+transform = Transform3D(0.078476556, 0, -0.99691594, 0, 1, 0, 0.99691594, 0, 0.078476556, -45.192772, 1.8583512, 5.258544)
+size = Vector3(4, 3.5, 0.5)
+material = SubResource("StandardMaterial3D_f7k36")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BunkerEnterance" unique_id=1436770955]
+transform = Transform3D(0.9971869, -0.065335386, -0.0367369, 0.041600548, 0.074709535, 0.99633723, -0.06235148, -0.9950627, 0.077217355, -41.41372, 6.370019, 5.630309)
+light_color = Color(0.77004176, 0.17443183, 0.15032336, 1)
+light_energy = 3.0
 
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/VisionZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_vision_zone_body_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/HearingZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_hearing_zone_body_entered"]
