@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://biyhgulmruk6t" path="res://pc_terminal.tscn" id="6_ql7me"]
 [ext_resource type="Script" uid="uid://bcmurby1mghfa" path="res://blast_door.gd" id="6_rikaf"]
 [ext_resource type="PackedScene" uid="uid://xxedvh4t54ia" path="res://tactical_guard.tscn" id="8_m4qtr"]
+[ext_resource type="PackedScene" uid="uid://b7toaruohn3wv" path="res://distraction_rock.tscn" id="8_uk5rt"]
 [ext_resource type="Script" uid="uid://b6yiikwdg3psl" path="res://elevator.gd" id="9_cxyy6"]
 [ext_resource type="Texture2D" uid="uid://cmod1come2sgl" path="res://141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png" id="10_7lkkl"]
 [ext_resource type="Script" uid="uid://b2v3amxdf1hsk" path="res://fuse_box.gd" id="10_8jlhq"]
@@ -316,6 +317,9 @@ transform = Transform3D(-0.1276532, 0, -0.99181885, 0, 1, 0, 0.99181885, 0, -0.1
 [node name="Enemy4" parent="NavigationRegion3D" unique_id=1378737979 instance=ExtResource("3_3yuak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8726225, 1.75, -17.86818)
 
+[node name="DistractionRock" parent="NavigationRegion3D" unique_id=1565750403 instance=ExtResource("8_uk5rt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.317055, 1.0715868, 11.984146)
+
 [node name="Comphouse" type="CSGBox3D" parent="." unique_id=270115988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.609131, 2.9503055, 9.345642)
 use_collision = true
@@ -617,7 +621,7 @@ curve = SubResource("Curve3D_84qmt")
 script = ExtResource("16_fcfgm")
 
 [node name="DronePatrol" type="PathFollow3D" parent="DronePath" unique_id=537534687]
-transform = Transform3D(0.14552371, 0.031483043, 0.98885113, 0, 0.9994916, -0.03182178, -0.989354, 0.0046308297, 0.14544976, -117.033585, 13.425682, -34.893913)
+transform = Transform3D(0.14552371, 0.03148306, 0.98885113, 0, 0.9994921, -0.03182178, -0.989354, 0.0046308325, 0.14544976, -117.033585, 13.425682, -34.893913)
 rotation_mode = 4
 
 [node name="SurveillanceDrone" type="Node3D" parent="DronePath/DronePatrol" unique_id=151251228]
@@ -734,6 +738,7 @@ transform = Transform3D(0.0106391935, 0, -0.9925727, 0, 1, 0, 0.5940684, 0, 0.01
 
 [node name="BunkerEnterance" type="Node3D" parent="." unique_id=822039870]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.1218, 0, 0)
+visible = false
 
 [node name="EnteranceWall_Left" type="CSGBox3D" parent="BunkerEnterance" unique_id=339569559]
 transform = Transform3D(0.011588719, 0, 0.9999329, 0, 1, 0, -0.9999329, 0, 0.011588719, -47.839027, 2.1577396, 2.9350595)
@@ -758,6 +763,12 @@ material = SubResource("StandardMaterial3D_f7k36")
 transform = Transform3D(0.9971869, -0.065335386, -0.0367369, 0.041600548, 0.074709535, 0.99633723, -0.06235148, -0.9950627, 0.077217355, -41.41372, 6.370019, 5.630309)
 light_color = Color(0.77004176, 0.17443183, 0.15032336, 1)
 light_energy = 3.0
+
+[node name="Enemy5" parent="." unique_id=807306973 instance=ExtResource("8_m4qtr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.09707, 1.75, -1.0567589)
+
+[node name="DistractionRock" parent="." unique_id=443141535 instance=ExtResource("8_uk5rt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.263756, 1.1188776, -6.738183)
 
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/VisionZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_vision_zone_body_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/HearingZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_hearing_zone_body_entered"]

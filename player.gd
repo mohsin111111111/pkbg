@@ -35,6 +35,8 @@ const BASE_FOV = 75.0
 const AIM_FOV = 40.0
 const SNIPER_FOV = 15.0 
 
+@export var rock_prefab: PackedScene = preload("res://distraction_rock.tscn")
+@export var throw_force: float = 15.0
 @export var fall_damage_threshold: float = -15.0
 @onready var camera = $Camera3D
 @onready var raycast = $Camera3D/RayCast3D
@@ -65,6 +67,8 @@ func _input(event):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("throw"):
+		throw_rock()
 	if Input.is_action_pressed("aim"):
 		if current_weapon == WeaponType.SNIPER:
 			camera.fov = lerp(camera.fov, SNIPER_FOV, 12 * delta)
@@ -246,3 +250,16 @@ func melee_attack():
 	raycast.target_position = original_target
 	await get_tree().create_timer(0.5).timeout 
 	can_shoot = true
+	
+func throw_rock() -> void:
+	if not rock_prefab: 
+		print("Error: No rock prefab assigned in the Inspector!")
+		return
+	print("Throwing rock!")
+	var rock = rock_prefab.instantiate() as RigidBody3D
+	get_tree().current_scene.add_child(rock) 
+	rock.global_position = camera.global_position - camera.global_transform.basis.z * 1.0
+	var throw_direction = -camera.global_transform.basis.z
+	throw_direction.y += 0.2 
+	throw_direction = throw_direction.normalized()
+	rock.linear_velocity = throw_direction * throw_force

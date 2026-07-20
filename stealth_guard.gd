@@ -29,3 +29,9 @@ func _on_hearing_zone_body_exited(body):
 func catch_player(reason):
 	print("MISSION FAILED: ", reason)
 	get_tree().call_deferred("change_scene_to_file", "res://bunker_level.tscn")
+
+func investigate_noise(noise_position: Vector3) -> void:
+	print("Huh?! What was that noise? Investigating...")
+	if has_node("NavigationAgent3D"):
+		var nav_agent = $NavigationAgent3D
+		nav_agent.target_position = noise_position
