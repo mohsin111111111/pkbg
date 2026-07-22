@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://e1ny32woq6eq" path="res://response_guard.gd" id="1_c5hix"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5hix"]
+albedo_color = Color(0.78753555, 0.7643981, 0, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5qauv"]
+material = SubResource("StandardMaterial3D_c5hix")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c5hix"]
 
@@ -12,7 +16,9 @@ script = ExtResource("1_c5hix")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=676430573]
 mesh = SubResource("CapsuleMesh_5qauv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D" unique_id=1261831245]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1261831245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008216381, 0)
 shape = SubResource("CapsuleShape3D_c5hix")
+debug_color = Color(0.6776512, 0.628833, 0.25231656, 1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=478947484]

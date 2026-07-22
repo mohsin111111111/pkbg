@@ -153,19 +153,43 @@ mesh = SubResource("PlaneMesh_84qmt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.566238, 12.242542, -8.45137)
 multimesh = SubResource("MultiMesh_84qmt")
 
+[node name="TreeSpawners2" type="MeshInstance3D" parent="." unique_id=101448038]
+transform = Transform3D(-0.9932478, 0, 0.11601198, 0, 1, 0, -0.11601198, 0, -0.9932478, -98.372604, 0.31622887, -98.58554)
+mesh = SubResource("PlaneMesh_84qmt")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawners2" unique_id=865517538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.566238, 12.242542, -8.45137)
+multimesh = SubResource("MultiMesh_84qmt")
+
+[node name="TreeSpawners3" type="MeshInstance3D" parent="." unique_id=1964936503]
+transform = Transform3D(-0.9932478, 0, 0.11601198, 0, 1, 0, -0.11601198, 0, -0.9932478, -179.93414, 0.31622887, -98.58554)
+mesh = SubResource("PlaneMesh_84qmt")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawners3" unique_id=392155567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.566238, 12.242542, -8.45137)
+multimesh = SubResource("MultiMesh_84qmt")
+
+[node name="TreeSpawners4" type="MeshInstance3D" parent="." unique_id=993984343]
+transform = Transform3D(-0.9932478, 0, 0.11601198, 0, 1, 0, -0.11601198, 0, -0.9932478, -185.95354, 0.31622887, -98.58554)
+mesh = SubResource("PlaneMesh_84qmt")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawners4" unique_id=166326471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.566238, 12.242542, -8.45137)
+multimesh = SubResource("MultiMesh_84qmt")
+
 [node name="Path3D" type="Path3D" parent="." unique_id=127912901]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47367096, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.35124, 0, 0)
 curve = SubResource("Curve3D_jh7cf")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=284510475]
-transform = Transform3D(0.9988116, 0, -0.048208036, 0, 0.999943, 0, 0.04820886, 0, 0.99879456, -102.599, 1, 2.674)
+transform = Transform3D(0.9988116, 0, -0.048208036, 0, 0.999943, 0, 0.04820886, 0, 0.99879456, -6.421196, 1, 2.674)
 
 [node name="StealthGuard2" type="StaticBody3D" parent="Path3D/PathFollow3D" unique_id=1447082273]
 transform = Transform3D(-0.99994713, 0, 0.012543526, 0, 1.000057, 0, -0.012543742, 0, -0.9999642, -30.560852, 19.764141, -1.941083)
 script = ExtResource("11_8jlhq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Path3D/PathFollow3D/StealthGuard2" unique_id=1666003797]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.817467, -16.905811, -0.16723633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.34029, -16.905811, -6.018172)
 size = Vector3(1.6217041, 5.527466, 2.6655273)
 material = SubResource("StandardMaterial3D_0bt4d")
 
@@ -478,12 +502,12 @@ use_collision = true
 size = Vector3(10, 39, 13)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Tower/TowerInterior" unique_id=1338975732]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0611954, 16.54366, -2.7313795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9393616, 16.995892, 0.59835243)
 operation = 2
 size = Vector3(1, 4, 5)
 
 [node name="Windowcut" type="CSGBox3D" parent="Tower" unique_id=731400039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3036346, 16.794441, 0.57866955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3036346, 16.794441, 0.5798273)
 operation = 2
 size = Vector3(2.9591064, 4, 5)
 
@@ -493,7 +517,7 @@ operation = 2
 size = Vector3(6, 6.023, 3)
 
 [node name="Balcony" type="CSGBox3D" parent="Tower" unique_id=318796272]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.444603, 14.929253, 0.77443504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.444603, 14.504574, 0.5737057)
 size = Vector3(4, 0.5, 4.322754)
 
 [node name="Elevator" type="AnimatableBody3D" parent="Tower" unique_id=292333571]
@@ -546,6 +570,7 @@ material = SubResource("StandardMaterial3D_pnsvy")
 shape = SubResource("BoxShape3D_0bt4d")
 
 [node name="StealthGuard" type="StaticBody3D" parent="Tower" unique_id=1751216240]
+transform = Transform3D(0.17519484, 0, -0.9845338, 0, 1, 0, 0.9845338, 0, 0.17519484, -30.634476, 0, 30.49024)
 script = ExtResource("11_8jlhq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Tower/StealthGuard" unique_id=2025257972]
@@ -585,13 +610,13 @@ mesh = SubResource("PlaneMesh_pnsvy")
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -8.527634, 79.83696, -2.6674194)
 
 [node name="Hostage" parent="." unique_id=1242521326 instance=ExtResource("13_jh7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.59614, 1.7398067, 23.860735)
+transform = Transform3D(0.9995614, -0.001413778, -0.029578667, 0.0004908885, 0.9995135, -0.031184593, 0.029608365, 0.031156396, 0.9990759, -141.1845, 1.7398067, 13.342499)
 
 [node name="Hostage2" parent="." unique_id=1833236148 instance=ExtResource("13_jh7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.43849, 2.0000002, 24.35139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.91663, 2.0000002, 10.6070595)
 
 [node name="Hostage3" parent="." unique_id=1602094947 instance=ExtResource("13_jh7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.12491, 2, 25.113144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.7989, 2, 16.250118)
 
 [node name="ExtractionChopper" type="Area3D" parent="." unique_id=204551943]
 
@@ -622,7 +647,7 @@ curve = SubResource("Curve3D_84qmt")
 script = ExtResource("16_fcfgm")
 
 [node name="DronePatrol" type="PathFollow3D" parent="DronePath" unique_id=537534687]
-transform = Transform3D(0.14552371, 0.03148307, 0.98885113, 0, 0.9994924, -0.03182178, -0.989354, 0.004630834, 0.14544976, -117.033585, 13.425682, -34.893913)
+transform = Transform3D(0.14552371, 0.03148311, 0.98885113, 0, 0.99949366, -0.03182178, -0.989354, 0.0046308395, 0.14544976, -117.033585, 13.425682, -34.893913)
 rotation_mode = 4
 
 [node name="SurveillanceDrone" type="Node3D" parent="DronePath/DronePatrol" unique_id=151251228]
@@ -768,11 +793,14 @@ light_energy = 3.0
 [node name="Enemy5" parent="." unique_id=807306973 instance=ExtResource("8_m4qtr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.09707, 1.75, -1.0567589)
 
-[node name="DistractionRock" parent="." unique_id=443141535 instance=ExtResource("8_uk5rt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.263756, 1.1188776, -6.738183)
-
 [node name="ResponseGuard" parent="." unique_id=1293831983 instance=ExtResource("20_f7k36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.207148, 1.5, -14.704373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.702812, 1.5, -14.704373)
+
+[node name="ResponseGuard2" parent="." unique_id=946624202 instance=ExtResource("20_f7k36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.290194, 2.4459572, -9.986507)
+
+[node name="ResponseGuard3" parent="." unique_id=488631999 instance=ExtResource("20_f7k36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.112755, 1.9779234, -19.19978)
 
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/VisionZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_vision_zone_body_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/StealthGuard2/HearingZone" to="Path3D/PathFollow3D/StealthGuard2" method="_on_hearing_zone_body_entered"]
