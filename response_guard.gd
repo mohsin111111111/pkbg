@@ -46,3 +46,23 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, walk_speed)
 		velocity.z = move_toward(velocity.z, 0, walk_speed)
 	move_and_slide()
+func _on_vision_zone_body_entered(body: Node3D) -> void:
+	var players = get_tree().get_nodes_in_group("Player")
+	var player_node = null
+	if players.size() > 0:
+		player_node = players[0]
+	if body.name == "Player": 
+		if player_node != null and player_node.is_wearing_disguise == true:
+			print("Response Guard: 'Prisoner transfer authorized, General.'")
+		else:
+			print("MISSION FAILED: Intruder spotted at the checkpoint!")
+			get_tree().call_deferred("reload_current_scene") 
+	elif body.is_in_group("Hostage"):
+		if player_node != null and player_node.is_wearing_disguise == true:
+			print("Response Guard: 'Keep those prisoners in line, General!'")
+		else:
+			print("MISSION FAILED: The hostages are escaping without an escort!")
+			get_tree().call_deferred("reload_current_scene") 
+func take_damage(amount: int) -> void:
+	print("MISSION FAILED: This guard is heavily armored. Your attack triggered the alarm!")
+	get_tree().call_deferred("reload_current_scene")

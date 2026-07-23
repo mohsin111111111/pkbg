@@ -10,6 +10,9 @@ material = SubResource("StandardMaterial3D_c5hix")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c5hix"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5hix"]
+size = Vector3(2, 2, 12)
+
 [node name="ResponseGuard" type="CharacterBody3D" unique_id=1293831983 groups=["Guard"]]
 script = ExtResource("1_c5hix")
 
@@ -22,3 +25,11 @@ shape = SubResource("CapsuleShape3D_c5hix")
 debug_color = Color(0.6776512, 0.628833, 0.25231656, 1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=478947484]
+
+[node name="VisionZone" type="Area3D" parent="." unique_id=370918018]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionZone" unique_id=1305554449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.916784)
+shape = SubResource("BoxShape3D_c5hix")
+
+[connection signal="body_entered" from="VisionZone" to="." method="_on_vision_zone_body_entered"]
