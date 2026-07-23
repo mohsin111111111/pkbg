@@ -182,7 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.35124, 0, 0)
 curve = SubResource("Curve3D_jh7cf")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=284510475]
-transform = Transform3D(0.9988116, 0, -0.048208036, 0, 0.999943, 0, 0.04820886, 0, 0.99879456, -6.421196, 1, 2.674)
+transform = Transform3D(0.9988116, 0, -0.048208036, 0, 0.999943, 0, 0.04820886, 0, 0.99879456, -102.599, 1, 2.674)
 
 [node name="StealthGuard2" type="StaticBody3D" parent="Path3D/PathFollow3D" unique_id=1447082273]
 transform = Transform3D(-0.99994713, 0, 0.012543526, 0, 1.000057, 0, -0.012543742, 0, -0.9999642, -30.560852, 19.764141, -1.941083)
@@ -314,6 +314,12 @@ transform = Transform3D(0.9469197, 0, -0.0015383661, 0, 1, 0, 0.0024790615, 0, 0
 
 [node name="ChainLinkFence24" parent="NavigationRegion3D" unique_id=1378413593 instance=ExtResource("5_ql7me")]
 transform = Transform3D(0.9997594, 0, -0.0015381308, 0, 1, 0, 0.002617397, 0, 0.58751917, 8.318489, 2.4166498, -4.7503967)
+
+[node name="ChainLinkFence25" parent="NavigationRegion3D" unique_id=1483291014 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.008515089, 0, -0.58749974, 0, 1, 0, 0.9997263, 0, -0.005003953, -136.24698, 2.4166498, -4.7503967)
+
+[node name="ChainLinkFence26" parent="NavigationRegion3D" unique_id=2111596846 instance=ExtResource("5_ql7me")]
+transform = Transform3D(-0.008515089, 0, -0.58749974, 0, 1, 0, 0.9997263, 0, -0.005003953, -136.24698, 2.4166498, 1.2720728)
 
 [node name="ChainLinkFence21" parent="NavigationRegion3D" unique_id=1277808324 instance=ExtResource("5_ql7me")]
 transform = Transform3D(0.9469197, 0, -0.0015383661, 0, 1, 0, 0.0024790615, 0, 0.58760905, -10.946939, 2.4166498, -49.217632)
@@ -570,7 +576,7 @@ material = SubResource("StandardMaterial3D_pnsvy")
 shape = SubResource("BoxShape3D_0bt4d")
 
 [node name="StealthGuard" type="StaticBody3D" parent="Tower" unique_id=1751216240]
-transform = Transform3D(0.17519484, 0, -0.9845338, 0, 1, 0, 0.9845338, 0, 0.17519484, -30.634476, 0, 30.49024)
+transform = Transform3D(0.17519484, 0, -0.9845338, 0, 1, 0, 0.9845338, 0, 0.17519484, -39.952003, 0, 18.283934)
 script = ExtResource("11_8jlhq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Tower/StealthGuard" unique_id=2025257972]
@@ -610,13 +616,13 @@ mesh = SubResource("PlaneMesh_pnsvy")
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -8.527634, 79.83696, -2.6674194)
 
 [node name="Hostage" parent="." unique_id=1242521326 instance=ExtResource("13_jh7cf")]
-transform = Transform3D(0.9995614, -0.001413778, -0.029578667, 0.0004908885, 0.9995135, -0.031184593, 0.029608365, 0.031156396, 0.9990759, -141.1845, 1.7398067, 13.342499)
+transform = Transform3D(0.9995614, -0.001413778, -0.029578667, 0.0004908885, 0.9995135, -0.031184593, 0.029608365, 0.031156396, 0.9990759, -152.16199, 1.7398067, -6.3990173)
 
 [node name="Hostage2" parent="." unique_id=1833236148 instance=ExtResource("13_jh7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.91663, 2.0000002, 10.6070595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.94409, 2.0000002, -3.0196037)
 
 [node name="Hostage3" parent="." unique_id=1602094947 instance=ExtResource("13_jh7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.7989, 2, 16.250118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.3498, 2, 1.8546257)
 
 [node name="ExtractionChopper" type="Area3D" parent="." unique_id=204551943]
 
@@ -789,9 +795,6 @@ material = SubResource("StandardMaterial3D_f7k36")
 transform = Transform3D(0.9971869, -0.065335386, -0.0367369, 0.041600548, 0.074709535, 0.99633723, -0.06235148, -0.9950627, 0.077217355, -41.41372, 6.370019, 5.630309)
 light_color = Color(0.77004176, 0.17443183, 0.15032336, 1)
 light_energy = 3.0
-
-[node name="Enemy5" parent="." unique_id=807306973 instance=ExtResource("8_m4qtr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.09707, 1.75, -1.0567589)
 
 [node name="ResponseGuard" parent="." unique_id=1293831983 instance=ExtResource("20_f7k36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.702812, 1.5, -14.704373)
