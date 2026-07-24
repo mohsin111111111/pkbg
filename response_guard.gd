@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 			if current_state == State.INVESTIGATING:
 				current_state = State.IDLE 
 				print("Response Guard: Nothing here... returning to post.")
-				await get_tree().create_timer(3.0).timeout
+				await get_tree().create_timer(8.0).timeout
 				current_state = State.RETURNING
 				nav_agent.target_position = original_post
 			elif current_state == State.RETURNING:
@@ -63,6 +63,6 @@ func _on_vision_zone_body_entered(body: Node3D) -> void:
 		else:
 			print("MISSION FAILED: The hostages are escaping without an escort!")
 			get_tree().call_deferred("reload_current_scene") 
-func take_damage(amount: int) -> void:
+func take_damage(_amount: int) -> void:
 	print("MISSION FAILED: This guard is heavily armored. Your attack triggered the alarm!")
 	get_tree().call_deferred("reload_current_scene")

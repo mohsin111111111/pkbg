@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0b0anptt8bhh"]
+
+[ext_resource type="Script" uid="uid://bvwg3s6p8amva" path="res://officer_uniform.gd" id="1_sa0wf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_id3ix"]
+albedo_color = Color(0.7916518, 0.99257916, 0.50734234, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hvbrd"]
+material = SubResource("StandardMaterial3D_id3ix")
+size = Vector3(0.6, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o1fmc"]
+size = Vector3(0.7, 0.2, 0.5)
+
+[node name="OfficerUniform" type="Area3D" unique_id=117165543]
+script = ExtResource("1_sa0wf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620136071]
+mesh = SubResource("BoxMesh_hvbrd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1117961207]
+shape = SubResource("BoxShape3D_o1fmc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

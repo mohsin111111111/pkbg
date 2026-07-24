@@ -1,5 +1,4 @@
 extends CharacterBody3D
-
 enum WeaponType {LASER, SHOTGUN, SNIPER}
 var current_weapon = WeaponType.LASER
 var weapon_db = {
@@ -7,11 +6,9 @@ var weapon_db = {
 	WeaponType.SHOTGUN: {"damage": 12, "rate": 0.8, "rays": 6, "spread": 0.15, "range": -15.0},
 	WeaponType.SNIPER: {"damage": 50, "rate": 1.5, "rays": 1, "spread": 0.0, "range": -2000.0}
 }
-
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 4.5
-
 var current_speed = WALK_SPEED
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_sensitivity = 0.002 
@@ -30,12 +27,14 @@ var current_ammo = max_ammo
 var is_reloading = false
 var recoil_amount = 0.05
 var can_shoot = true 
+var is_wearing_disguise = false
 
 const BASE_FOV = 75.0
 const AIM_FOV = 40.0
 const SNIPER_FOV = 15.0 
 
 @export var rock_prefab: PackedScene = preload("res://distraction_rock.tscn")
+@export var disguise_prefab: PackedScene 
 @export var throw_force: float = 15.0
 @export var fall_damage_threshold: float = -15.0
 @onready var camera = $Camera3D
@@ -52,18 +51,15 @@ func _ready():
 	score_text.text= "Score:" + str(score)
 	update_ammo_text()
 	raycast.add_exception(self)
-
 func _unhandled_input(event):
 	if event.is_action_pressed("weapon_1"): current_weapon = WeaponType.LASER
 	if event.is_action_pressed("weapon_2"): current_weapon = WeaponType.SHOTGUN
 	if event.is_action_pressed("weapon_3"): current_weapon = WeaponType.SNIPER
-
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -125,7 +121,6 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("sprint"):
 		is_crouching = false
 		current_speed = SPRINT_SPEED
-		#print("___ SIFT KEY DETECTED___")
 		camera.position.y = 1.5
 		target_fov = 95.0
 	else:
@@ -148,6 +143,7 @@ func _physics_process(delta):
 	elif is_on_floor():
 		camera.rotation.z = lerp(camera.rotation.z, 0.0, 10 * delta)
 	move_and_slide()
+
 func fire_weapon():
 	can_shoot = false
 	current_ammo -= 1
@@ -163,14 +159,12 @@ func fire_weapon():
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		raycast.target_position = original_target + (offset * original_target.length())
 		raycast.force_raycast_update()
+		
 		if raycast.is_colliding():
 			var hit_object = raycast.get_collider()
-			#var distance = global_position.distance_to(hit_object.global_position)
 			print("---PULLED TRIGGER---")
-			if hit_object.name == "StealthGuard":
-				#if distance < 3.0:
-					#print("Silent Takedown! Guard eliminated")
-					#hit_object.queue_free()
+			
+			if hit_object.name == "StealthGuard" or "ResponseGuard" in hit_object.name:
 				if current_weapon == WeaponType.SNIPER:
 					print("Sniper Assasination! Guard eliminated cleanly.")
 					hit_object.queue_free()
@@ -184,9 +178,11 @@ func fire_weapon():
 					hit_object.take_damage(stats.damage) 
 				elif hit_object.get_parent() != null and hit_object.get_parent().has_method("take_damage"):
 					hit_object.get_parent().take_damage(stats.damage)
+					
 	raycast.target_position = original_target
 	await get_tree().create_timer(stats.rate).timeout
 	can_shoot = true
+
 func take_damage(amount):
 	health -= amount
 	health_text.text = "Health:" + str(health)
@@ -216,7 +212,6 @@ func heal(amount):
 	if health > 100:
 		health = 100
 	health_text.text = "Health: " + str(health)
-	
 func try_interact():
 	var original_target = raycast.target_position
 	raycast.target_position = Vector3(0, 0, -3.0) 
@@ -232,7 +227,6 @@ func try_interact():
 			add_score(100)
 			print("Interaction Successful: Hostage Parent Saved!")
 	raycast.target_position = original_target
-	
 func melee_attack():
 	can_shoot = false 
 	print("Swung Knife!")
@@ -242,11 +236,22 @@ func melee_attack():
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
 		if target.name == "StealthGuard":
-			print("Knife Execution! Guard eliminated silently.")
+			print("Knife Execution! Stealth Guard eliminated.")
+			if disguise_prefab:
+				var uniform = disguise_prefab.instantiate()
+				get_tree().current_scene.add_child(uniform)
+				uniform.global_position = target.global_position
+				uniform.global_position.y -= 1.0 
 			target.queue_free()
+			
+		elif "ResponseGuard" in target.name:
+			print("Knife Execution! Response Guard eliminated. The exit is clear!")
+			target.queue_free()
+			
 		elif target.has_method("take_damage"):
 			print("Stabbed ", target.name, " for 50 damage!")
 			target.take_damage(50)
+			
 	raycast.target_position = original_target
 	await get_tree().create_timer(0.5).timeout 
 	can_shoot = true
@@ -256,6 +261,7 @@ func throw_rock() -> void:
 		print("Error: No rock prefab assigned in the Inspector!")
 		return
 	print("Throwing rock!")
+	
 	var rock = rock_prefab.instantiate() as RigidBody3D
 	get_tree().current_scene.add_child(rock) 
 	rock.global_position = camera.global_position - camera.global_transform.basis.z * 1.0

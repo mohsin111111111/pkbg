@@ -5,10 +5,16 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dcq3"]
 albedo_color = Color(0, 0.9846758, 0.9900387, 1)
 
-[node name="Hostage" type="Node3D" unique_id=1242521326]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_skgm8"]
+
+[node name="Hostage" type="CharacterBody3D" unique_id=2117412378]
 script = ExtResource("1_skgm8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=421470410]
-use_collision = true
 size = Vector3(1.5, 3, 1)
 material = SubResource("StandardMaterial3D_6dcq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=532192116]
+shape = SubResource("CapsuleShape3D_skgm8")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=309547909]
