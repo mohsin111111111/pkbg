@@ -2,7 +2,7 @@ PKBG
 
 PKBG is a commando based action game where the player has to fight through enemy bases and save his fellow mates.
 
-Story
+# Story
 
 The player starts in an enemy base and has to cross the fence and eliminate 3 enemies. One of the enemies has a secret key which is required to open the locked door at the end of the area.
 
