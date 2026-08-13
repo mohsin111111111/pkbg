@@ -28,7 +28,7 @@ func _on_hearing_zone_body_exited(body):
 
 func catch_player(reason):
 	print("MISSION FAILED: ", reason)
-	get_tree().call_deferred("change_scene_to_file", "res://Scenes/bunker_level.scn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/bunker_level.scn")
 
 func investigate_noise(noise_position: Vector3) -> void:
 	print("Huh?! What was that noise? Investigating...")

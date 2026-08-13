@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var health = 3
 var gun_damage = 2
-var tracer_scene = preload("res://Scenes/tracer.tscn")
+var tracer_scene = preload("res://scenes/tracer.tscn")
 var player = null 
 var is_hiding = false 
 var original_y_position = 0.0

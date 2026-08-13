@@ -44,7 +44,7 @@ const BASE_FOV = 75.0
 const AIM_FOV = 40.0
 const SNIPER_FOV = 15.0 
 
-@export var rock_prefab: PackedScene = preload("res://Scenes/distraction_rock.tscn")
+@export var rock_prefab: PackedScene = preload("res://scenes/distraction_rock.tscn")
 @export var disguise_prefab: PackedScene 
 @export var throw_force: float = 15.0
 @export var fall_damage_threshold: float = -15.0
@@ -185,7 +185,7 @@ func _physics_process(delta):
 			else:
 				print("CRUNCH! You fell too hard")
 				set_physics_process(false)
-				get_tree().call_deferred("change_scene_to_file", "res://Scenes/bunker_level.scn")
+				get_tree().call_deferred("change_scene_to_file", "res://scenes/bunker_level.scn")
 				
 	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
@@ -255,7 +255,7 @@ func fire_weapon():
 					hit_object.queue_free()
 				else:
 					print("Gunshot heard! Mission Failed.")
-					get_tree().call_deferred("change_scene_to_file","res://Scenes/bunker_level.scn")
+					get_tree().call_deferred("change_scene_to_file","res://scenes/bunker_level.scn")
 					return
 			else:
 				print("Hit: ", hit_object.name, " with ", stats.damage, " damage!")
