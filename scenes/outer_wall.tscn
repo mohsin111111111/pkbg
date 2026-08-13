@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cadod0jxnuyby"]
+
+[ext_resource type="Texture2D" uid="uid://cfy6q863ig22b" path="res://scenes/hangar_concrete_floor_diff_4k.png" id="1_d3jt2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdu8n"]
+albedo_texture = ExtResource("1_d3jt2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6xvw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvkqa"]
+
+[node name="OuterWall" type="CSGBox3D" unique_id=1636322389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8357215, 1.9791262, 0)
+material_override = SubResource("StandardMaterial3D_bdu8n")
+use_collision = true
+size = Vector3(30.944036, 7.8647733, 0.7125244)
+material = SubResource("StandardMaterial3D_u6xvw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1234894777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4413023, 0.8632498, 0)
+size = Vector3(1, 9.688232, 1)
+material = SubResource("StandardMaterial3D_gvkqa")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1920258831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.397576, 0.8632498, 0)
+size = Vector3(1, 9.688232, 1)
+material = SubResource("StandardMaterial3D_gvkqa")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1802440512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.76263, 0.8632498, 0)
+size = Vector3(1, 9.688232, 1)
+material = SubResource("StandardMaterial3D_gvkqa")

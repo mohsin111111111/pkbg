@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c40pvsmqry6mj"]
+
+[ext_resource type="Script" uid="uid://488h6c2lwedi" path="res://scripts/victory_screen.gd" id="1_rbj82"]
+
+[node name="VictoryScreen" type="Control" unique_id=879346803]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rbj82")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1449733564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15844586, 0.31386504, 0.13634083, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1627650123]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 70.0
+offset_right = 771.0
+offset_bottom = 183.0
+text = "MISSION ACCOMPLISHED"
+
+[node name="Back to menu" type="Button" parent="." unique_id=1798001713]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 261.0
+offset_right = 663.0
+offset_bottom = 334.0
+text = "Back to Menu
+"
+
+[connection signal="pressed" from="Back to menu" to="." method="_on_back_to_menu_pressed"]

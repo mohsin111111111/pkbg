@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c08qydkyaymb5"]
+
+[ext_resource type="Script" uid="uid://drv22g6xawmwg" path="res://scripts/rc_drone.gd" id="1_xx40g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w2nl"]
+albedo_color = Color(0.2803937, 0.29716414, 0.27203843, 1)
+metallic = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_xx40g"]
+material = SubResource("StandardMaterial3D_7w2nl")
+size = Vector3(0.4, 0.15, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yuvu0"]
+size = Vector3(0.4647503, 0.20122528, 0.67381287)
+
+[node name="RcDrone" type="CharacterBody3D" unique_id=209066838]
+script = ExtResource("1_xx40g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890053702]
+mesh = SubResource("BoxMesh_xx40g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1809691323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0055292845, 0.009787828, 0.008223176)
+shape = SubResource("BoxShape3D_yuvu0")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1670010177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12850803, -0.25658077)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=5072088]
+target_position = Vector3(0, 0, -2)
