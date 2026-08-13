@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c40pvsmqry6mj"]
 
-[ext_resource type="Script" uid="uid://488h6c2lwedi" path="res://scripts/victory_screen.gd" id="1_rbj82"]
+[ext_resource type="Script" uid="uid://488h6c2lwedi" path="res://Scripts/victory_screen.gd" id="1_rbj82"]
 
 [node name="VictoryScreen" type="Control" unique_id=879346803]
 layout_mode = 3

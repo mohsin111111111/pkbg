@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7toaruohn3wv"]
 
-[ext_resource type="Script" uid="uid://dywtaca5474ai" path="res://scripts/distraction_rock.gd" id="1_mlbbh"]
+[ext_resource type="Script" uid="uid://dywtaca5474ai" path="res://Scripts/distraction_rock.gd" id="1_mlbbh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mlbbh"]
 

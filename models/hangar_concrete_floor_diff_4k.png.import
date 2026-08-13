@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3u8s57yhyxhb"
-path.s3tc="res://.godot/imported/2529b910871e9f49a446ff56425942b8.png-57ad775b619538d26d8e4629b3a93b24.s3tc.ctex"
+uid="uid://cfy6q863ig22b"
+path.s3tc="res://.godot/imported/hangar_concrete_floor_diff_4k.png-a054815ec33e2487cc2c5ef8a81c5e3c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/2529b910871e9f49a446ff56425942b8.png"
-dest_files=["res://.godot/imported/2529b910871e9f49a446ff56425942b8.png-57ad775b619538d26d8e4629b3a93b24.s3tc.ctex"]
+source_file="res://models/hangar_concrete_floor_diff_4k.png"
+dest_files=["res://.godot/imported/hangar_concrete_floor_diff_4k.png-a054815ec33e2487cc2c5ef8a81c5e3c.s3tc.ctex"]
 
 [params]
 

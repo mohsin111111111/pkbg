@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfy6q863ig22b"
-path.s3tc="res://.godot/imported/hangar_concrete_floor_diff_4k.png-6502a0ed3f28437ef10e499fda27e04e.s3tc.ctex"
+uid="uid://bxhqwmgodi07j"
+path.s3tc="res://.godot/imported/barbed-wire-fence-png-removebg-preview.png-af20d5fa2b0e14e01190d8cc55d995de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/hangar_concrete_floor_diff_4k.png"
-dest_files=["res://.godot/imported/hangar_concrete_floor_diff_4k.png-6502a0ed3f28437ef10e499fda27e04e.s3tc.ctex"]
+source_file="res://addons/barbed-wire-fence-png-removebg-preview.png"
+dest_files=["res://.godot/imported/barbed-wire-fence-png-removebg-preview.png-af20d5fa2b0e14e01190d8cc55d995de.s3tc.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0b0anptt8bhh"]
 
-[ext_resource type="Script" uid="uid://bvwg3s6p8amva" path="res://scripts/officer_uniform.gd" id="1_sa0wf"]
+[ext_resource type="Script" uid="uid://bvwg3s6p8amva" path="res://Scripts/officer_uniform.gd" id="1_sa0wf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_id3ix"]
 albedo_color = Color(0.7916518, 0.99257916, 0.50734234, 1)

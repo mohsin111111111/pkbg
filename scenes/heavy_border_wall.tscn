@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjap6hu65u2uk"]
 
-[ext_resource type="Texture2D" uid="uid://bxhqwmgodi07j" path="res://scenes/barbed-wire-fence-png-removebg-preview.png" id="1_f4ym2"]
+[ext_resource type="Texture2D" uid="uid://bxhqwmgodi07j" path="res://addons/barbed-wire-fence-png-removebg-preview.png" id="1_f4ym2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1hjx"]
 albedo_color = Color(0.6978217, 0.37865016, 0.19070715, 1)

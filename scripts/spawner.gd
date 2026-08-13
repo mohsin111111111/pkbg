@@ -1,6 +1,6 @@
 extends Node3D
 
-var enemy_blueprint = preload("res://scenes/enemy.tscn")
+var enemy_blueprint = preload("res://Scenes/enemy.tscn")
 @onready var timer =$Timer
 func _on_timer_timeout():
 	var new_zombie = enemy_blueprint.instantiate()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dct6nnhky21n4"]
 
-[ext_resource type="Script" uid="uid://b36h0ixk2w5mk" path="res://scripts/red_door.gd" id="1_egxfp"]
+[ext_resource type="Script" uid="uid://b36h0ixk2w5mk" path="res://Scripts/red_door.gd" id="1_egxfp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_egxfp"]
 size = Vector3(4, 5, 0.53)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pncim4jbrdj4"]
 
-[ext_resource type="Script" uid="uid://bs25c7ma084p8" path="res://scripts/tracer.gd" id="1_yt2qg"]
+[ext_resource type="Script" uid="uid://bs25c7ma084p8" path="res://Scripts/tracer.gd" id="1_yt2qg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhrec"]
 shading_mode = 0

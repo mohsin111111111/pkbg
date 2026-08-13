@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c08qydkyaymb5"]
 
-[ext_resource type="Script" uid="uid://drv22g6xawmwg" path="res://scripts/rc_drone.gd" id="1_xx40g"]
+[ext_resource type="Script" uid="uid://drv22g6xawmwg" path="res://Scripts/rc_drone.gd" id="1_xx40g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w2nl"]
 albedo_color = Color(0.2803937, 0.29716414, 0.27203843, 1)

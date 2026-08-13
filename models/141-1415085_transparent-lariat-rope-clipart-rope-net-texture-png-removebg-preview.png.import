@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7oekh67kychp"
-path="res://.godot/imported/barbed-wire-vector-fence-barbwire-600nw-2319529855.webp-0dd4483befecc655f377b569068009d7.ctex"
+uid="uid://cmod1come2sgl"
+path.s3tc="res://.godot/imported/141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png-93ff75e2cc501acb91bfedc4279b0105.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://scenes/barbed-wire-vector-fence-barbwire-600nw-2319529855.webp"
-dest_files=["res://.godot/imported/barbed-wire-vector-fence-barbwire-600nw-2319529855.webp-0dd4483befecc655f377b569068009d7.ctex"]
+source_file="res://models/141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png"
+dest_files=["res://.godot/imported/141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png-93ff75e2cc501acb91bfedc4279b0105.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

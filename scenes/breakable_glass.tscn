@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bp2q7pq2b1sw7"]
 
-[ext_resource type="Script" uid="uid://c6ieppkwqxb71" path="res://scripts/breakable_glass.gd" id="1_kjh3s"]
+[ext_resource type="Script" uid="uid://c6ieppkwqxb71" path="res://Scripts/breakable_glass.gd" id="1_kjh3s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw7bq"]
 transparency = 1

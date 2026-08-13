@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmod1come2sgl"
-path.s3tc="res://.godot/imported/141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png-c90506eb27ebbf7dab6f71c77563ac8a.s3tc.ctex"
+uid="uid://dlgcqv01asg7y"
+path.s3tc="res://.godot/imported/distressed-old-brick-building-with-damaged-facade-cut-out-stock-png.webp-233e1755c883fb66009d88ff7da9d542.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png"
-dest_files=["res://.godot/imported/141-1415085_transparent-lariat-rope-clipart-rope-net-texture-png-removebg-preview.png-c90506eb27ebbf7dab6f71c77563ac8a.s3tc.ctex"]
+source_file="res://models/distressed-old-brick-building-with-damaged-facade-cut-out-stock-png.webp"
+dest_files=["res://.godot/imported/distressed-old-brick-building-with-damaged-facade-cut-out-stock-png.webp-233e1755c883fb66009d88ff7da9d542.s3tc.ctex"]
 
 [params]
 

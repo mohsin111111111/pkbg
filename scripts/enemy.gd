@@ -8,8 +8,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var is_static = false
 @export var is_sniper = false 
 
-var key_blueprint = preload("res://scenes/red_key.tscn")
-var tracer_scene = preload("res://scenes/tracer.tscn")
+var key_blueprint = preload("res://Scenes/red_key.tscn")
+var tracer_scene = preload("res://Scenes/tracer.tscn")
 
 var player = null
 var can_shoot = true 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xxedvh4t54ia"]
 
-[ext_resource type="Script" uid="uid://cd6j7na065et0" path="res://scripts/tactical_guard.gd" id="1_i01mw"]
-[ext_resource type="Script" uid="uid://b35p2jq5d7nkl" path="res://scripts/head.gd" id="2_1waiw"]
+[ext_resource type="Script" uid="uid://cd6j7na065et0" path="res://Scripts/tactical_guard.gd" id="1_i01mw"]
+[ext_resource type="Script" uid="uid://b35p2jq5d7nkl" path="res://Scripts/head.gd" id="2_1waiw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k104"]
 albedo_color = Color(0.4745098, 1, 0.43529412, 1)
